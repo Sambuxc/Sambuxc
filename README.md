@@ -11,7 +11,7 @@
 
 :bowtie: :computer:
 
-🔭  7 years of experience Frontend development experience utilising Shopify & Wordpress theme customisations and building reactive Javascript web apps
+<li>🔭  7 years of experience Frontend development experience utilising Shopify & Wordpress theme customisations and building reactive Javascript web apps</li>
 🌱  I’m learning to be a better writer and communicator
 👯  I’m looking to collaborate on projects that are creative, dynamic and agile
 💬  As a Mentor, ask me how to get started learning Javascript or how to take your skills to the next level 📈
@@ -24,7 +24,13 @@ I saw a niche market in a multi-massive online chatting community (MMOCC) game c
 
 #### What is the most important thing to me?
 
-Delivering projects, Simplifying problems in code, Having fun doing it, Helping others and Skating.
+• Delivering small and large projects
+• Code reviewing
+• Code documentation
+• Simplification of code
+• Having fun doing it
+• Helping others
+• Skating
 
 **Buy me a coffee** ☕️
 
