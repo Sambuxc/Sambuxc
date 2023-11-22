@@ -11,11 +11,11 @@
 
 :bowtie: :computer:
 
-- 🔭  2 years of experience - Shopify theme customisation
-- 🌱  I’m learning to be a better writer and communicator
-- 👯  I’m looking to collaborate on projects that are fun and creative
-- 💬  Ask me about how to improve your website User Interface and User Experience
--  ⚡  Fun fact: I skateboard and ride aggressive rollerblades
+🔭  7 years of experience Frontend development experience utilising Shopify & Wordpress theme customisations and building reactive Javascript web apps
+🌱  I’m learning to be a better writer and communicator
+👯  I’m looking to collaborate on projects that are creative, dynamic and agile
+💬  As a Mentor, ask me how to get started learning Javascript or how to take your skills to the next level 📈
+🛹  Fun fact: I skateboard and ride inline rollerskates
 
 
 #### How did I get into Web Dev?
@@ -24,7 +24,7 @@ I saw a niche market in a multi-massive online chatting community (MMOCC) game c
 
 #### What is the most important thing to me?
 
-Simplification, Fun, Helping others and Skating.
+Delivering projects, Simplifying problems in code, Having fun doing it, Helping others and Skating.
 
 **Buy me a coffee** ☕️
 
