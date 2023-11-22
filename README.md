@@ -7,7 +7,7 @@
 
 ### Hi there 👋
 
-**Samuroid/samuroid** is a ✨ _special_ ✨ personal repo portfolio as a Frontend web developer in Northwest England.
+**Sambuxc/Sambuxc** is a ✨ _special_ ✨ personal repo portfolio as a Frontend web developer in Northwest England.
 
 :bowtie: :computer:
 
