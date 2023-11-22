@@ -25,11 +25,17 @@ I saw a niche market in a multi-massive online chatting community (MMOCC) game c
 #### What is the most important thing to me?
 
 • Delivering small and large projects
+
 • Code reviewing
+
 • Code documentation
+
 • Simplification of code
+
 • Having fun doing it
+
 • Helping others
+
 • Skating
 
 **Buy me a coffee** ☕️
