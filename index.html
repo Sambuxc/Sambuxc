@@ -133,6 +133,16 @@
       height: inherit;
       opacity: .9;
     }
+    .mark:hover .logo img{
+      transition: transform .3s ease-in-out;
+      transform: rotate(-9deg);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+    }
+    /* Keep it calm on touch devices */
+    @media (hover: none){
+      .mark:hover .logo img { transform: none; }
+    }
     .name{
       display: flex;
       flex-direction: column;
