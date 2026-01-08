@@ -10,6 +10,7 @@
 
   <style>
     :root{
+      /* theme tokens (default = dark) */
       --bg: #0b0c0f;
       --panel: rgba(255,255,255,.06);
       --panel2: rgba(255,255,255,.08);
@@ -17,6 +18,7 @@
       --muted: rgba(255,255,255,.62);
       --faint: rgba(255,255,255,.18);
       --line: rgba(255,255,255,.12);
+
       --shadow: 0 18px 60px rgba(0,0,0,.45);
       --radius: 18px;
       --max: 1040px;
@@ -25,6 +27,20 @@
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
+
+    /* light theme overrides */
+    html[data-theme="light"]{
+      --bg: #f7f7f8;
+      --panel: rgba(0,0,0,.04);
+      --panel2: rgba(0,0,0,.06);
+      --text: rgba(0,0,0,.90);
+      --muted: rgba(0,0,0,.60);
+      --faint: rgba(0,0,0,.14);
+      --line: rgba(0,0,0,.10);
+
+      --shadow: 0 18px 50px rgba(0,0,0,.12);
+    }
+
 
     *{ box-sizing: border-box; }
     html,body{ height: 100%; }
@@ -54,6 +70,25 @@
       background-image:
               url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
       mix-blend-mode: overlay;
+    }
+
+    /* theme color mode */
+    .iconbtn{
+      padding: 9px 10px;
+      min-width: 40px;
+      justify-content: center;
+    }
+    .icon{
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1;
+      opacity: .9;
+    }
+
+    /* make the header gradient adapt to theme */
+    header{
+      background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 80%, transparent), color-mix(in srgb, var(--bg) 35%, transparent));
+      border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
     }
 
     /* top bar */
@@ -415,6 +450,10 @@
     </nav>
 
     <div class="cta">
+      <button class="btn secondary iconbtn" id="themeToggle" type="button" aria-label="Toggle theme">
+        <span class="icon" aria-hidden="true">☾</span>
+      </button>
+
       <a class="btn secondary" href="#contact">Say hello</a>
       <a class="btn" href="#" title="Replace # with your CV PDF link">Download CV ↘</a>
     </div>
@@ -683,6 +722,38 @@
 </main>
 
 <script>
+  // theme: system default + localStorage override
+  const THEME_KEY = "sb-theme";
+
+  function getSystemTheme(){
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches
+            ? "light"
+            : "dark";
+  }
+
+  function applyTheme(theme){
+    document.documentElement.setAttribute("data-theme", theme);
+    const icon = document.querySelector("#themeToggle .icon");
+    if (icon) icon.textContent = theme === "light" ? "☀" : "☾";
+  }
+
+  const saved = localStorage.getItem(THEME_KEY);
+  const initial = saved || getSystemTheme();
+  applyTheme(initial);
+
+  document.getElementById("themeToggle")?.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme") || getSystemTheme();
+    const next = current === "light" ? "dark" : "light";
+    localStorage.setItem(THEME_KEY, next);
+    applyTheme(next);
+  });
+
+  // Optional: if user never chose a theme, follow system changes live
+  window.matchMedia?.("(prefers-color-scheme: light)")?.addEventListener?.("change", () => {
+    const savedNow = localStorage.getItem(THEME_KEY);
+    if (!savedNow) applyTheme(getSystemTheme());
+  });
+
   // small niceties: year + gentle reveal on scroll
   document.getElementById("year").textContent = new Date().getFullYear();
 
