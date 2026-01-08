@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sam Bruton — Resume" />
+  <title>Sam Bruton</title>
+
+  <!-- Optional favicon (swap with yours) -->
+  <!-- <link rel="icon" href="/favicon.ico" /> -->
+
+  <style>
+    :root{
+      --bg: #0b0c0f;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --faint: rgba(255,255,255,.18);
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1040px;
+      --pad: 22px;
+      --pad2: 28px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+              radial-gradient(1200px 800px at 10% 0%, rgba(255,255,255,.08), transparent 55%),
+              radial-gradient(900px 700px at 90% 15%, rgba(255,255,255,.06), transparent 60%),
+              radial-gradient(900px 900px at 50% 110%, rgba(255,255,255,.05), transparent 60%),
+              var(--bg);
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 26px 18px 60px; }
+
+    /* subtle noise */
+    .noise{
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      opacity: .08;
+      background-image:
+              url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    /* top bar */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,12,15,.75), rgba(11,12,15,.35));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .top{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .mark{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 190px;
+    }
+    .logo{
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+      display: grid;
+      place-items: center;
+      letter-spacing: .02em;
+      font-weight: 700;
+    }
+    .logo span{
+      font-family: var(--mono);
+      font-size: 14px;
+      opacity: .9;
+    }
+    .name{
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .name strong{ font-size: 14px; letter-spacing: .02em; }
+    .name small{ color: var(--muted); font-size: 12px; }
+
+    nav{
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{
+      font-size: 13px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+    }
+    nav a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.12);
+      text-decoration: none;
+    }
+
+    .cta{
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn{
+      font-size: 13px;
+      padding: 9px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn:hover{
+      background: rgba(255,255,255,.10);
+      text-decoration: none;
+    }
+    .btn.secondary{
+      border-color: rgba(255,255,255,.10);
+      background: transparent;
+      color: var(--muted);
+      box-shadow: none;
+    }
+    .btn.secondary:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+    }
+
+    /* hero */
+    .hero{
+      padding: 34px 0 18px;
+      display: grid;
+      gap: 18px;
+    }
+    .headline{
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .headline:before{
+      content:"";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(520px 240px at 18% 18%, rgba(255,255,255,.12), transparent 58%);
+      opacity: .9;
+      pointer-events: none;
+    }
+    .kicker{
+      position: relative;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+    h1{
+      position: relative;
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 44px);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    .sub{
+      position: relative;
+      margin: 0;
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .meta{
+      position: relative;
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .chip{
+      font-size: 13px;
+      color: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      padding: 8px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      white-space: nowrap;
+    }
+    .dot{
+      width: 6px; height: 6px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.65);
+      opacity: .8;
+    }
+
+    /* layout sections */
+    .grid{
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 880px){
+      .grid{ grid-template-columns: 1fr; }
+      .mark{ min-width: auto; }
+    }
+
+    section{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      padding: var(--pad2);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+    }
+
+    .section-title{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 0 0 16px;
+    }
+    .section-title h2{
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: .02em;
+    }
+    .section-title span{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .stack{ display: grid; gap: 12px; }
+    .card{
+      padding: 16px 16px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    }
+
+    .row{
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .role{
+      font-weight: 650;
+      letter-spacing: .01em;
+      margin: 0;
+      font-size: 14px;
+    }
+    .where{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .when{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,.80);
+      line-height: 1.6;
+      font-size: 13.5px;
+    }
+    li{ margin: 6px 0; }
+
+    /* right column blocks */
+    .mini{
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .mini h3{
+      margin: 0 0 10px;
+      font-size: 13px;
+      letter-spacing: .02em;
+      color: rgba(255,255,255,.86);
+    }
+    .pillrow{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill{
+      font-size: 12.5px;
+      padding: 7px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.78);
+    }
+
+    .two-col{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 520px){
+      .two-col{ grid-template-columns: 1fr; }
+    }
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      opacity: .9;
+    }
+    .sep{
+      height: 1px;
+      background: rgba(255,255,255,.10);
+      margin: 14px 0;
+    }
+
+    /* gentle reveal */
+    .reveal{
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.on{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* print */
+    @media print{
+      header{ position: static; backdrop-filter: none; background: #fff; border-bottom: 1px solid #ddd; }
+      body{ background: #fff; color: #111; }
+      section, .headline, .card, .mini{ box-shadow: none; background: #fff; border-color: #ddd; }
+      .logo{ box-shadow: none; background: #f3f3f3; border-color: #ddd; }
+      nav, .cta{ display: none; }
+      .noise{ display: none; }
+      a{ text-decoration: none; }
+      .muted, .sub, .where, .when{ color: #444 !important; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="noise" aria-hidden="true"></div>
+
+<header>
+  <div class="top">
+    <a class="mark" href="#top" aria-label="Home">
+      <div class="logo" aria-hidden="true"><span>SB</span></div>
+      <div class="name">
+        <strong>Sam Bruton</strong>
+        <small>Front-End Engineer · Resume</small>
+      </div>
+    </a>
+
+    <nav aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#craft">Craft</a>
+      <a href="#involvements">Involvements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="cta">
+      <a class="btn secondary" href="#contact">Say hello</a>
+      <a class="btn" href="#" title="Replace # with your CV PDF link">Download CV ↘</a>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <div class="hero reveal">
+    <div class="headline">
+      <p class="kicker">Minimal, but not empty</p>
+      <h1>
+        I build calm, dependable interfaces<br />
+        that stay sharp under real-world pressure.
+      </h1>
+      <p class="sub">
+        Replace this with a 2–3 sentence summary: what you do, what you’re great at, and the kind of teams/problems you like.
+        Keep it human. Keep it specific.
+      </p>
+
+      <div class="meta" role="list" aria-label="Quick facts">
+        <div class="chip" role="listitem"><span class="dot"></span> Based in: <strong>United Kingdom</strong></div>
+        <div class="chip" role="listitem"><span class="dot"></span> Focus: <strong>Front-end</strong> + <strong>DX</strong></div>
+        <div class="chip" role="listitem"><span class="dot"></span> Interests: <strong>Design systems</strong>, <strong>Testing</strong>, <strong>Platform</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- LEFT: Main narrative -->
+    <div class="stack">
+      <section id="work" class="reveal">
+        <div class="section-title">
+          <h2>Work that shipped</h2>
+          <span>Experience</span>
+        </div>
+
+        <div class="stack">
+          <div class="card">
+            <div class="row">
+              <div>
+                <p class="role">Role Title — Company</p>
+                <p class="where">Team/Area · short description of product and your scope</p>
+              </div>
+              <div class="when">2024 — Present</div>
+            </div>
+            <ul>
+              <li>Outcome-focused bullet (e.g., “Reduced checkout drop-off by X% by …”).</li>
+              <li>Scope + leadership bullet (e.g., “Owned feature end-to-end from discovery → delivery → monitoring”).</li>
+              <li>Craft bullet (e.g., “Improved test coverage and confidence with …”).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="row">
+              <div>
+                <p class="role">Role Title — Company</p>
+                <p class="where">Team/Area · what you were responsible for</p>
+              </div>
+              <div class="when">2022 — 2024</div>
+            </div>
+            <ul>
+              <li>Key project/initiative (what it was, why it mattered).</li>
+              <li>Collaboration bullet (stakeholders, cross-team work, mentoring).</li>
+              <li>Technical highlight (performance, architecture, accessibility, tooling).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="row">
+              <div>
+                <p class="role">Earlier Role — Company</p>
+                <p class="where">Short line about what you did here</p>
+              </div>
+              <div class="when">2020 — 2022</div>
+            </div>
+            <ul>
+              <li>One strong bullet. Keep it concrete.</li>
+              <li>One more. Prefer impact over tasks.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="craft" class="reveal">
+        <div class="section-title">
+          <h2>How I like to build</h2>
+          <span>Skills · Projects · Principles</span>
+        </div>
+
+        <div class="stack">
+          <div class="card">
+            <div class="row">
+              <div>
+                <p class="role">Signature strengths</p>
+                <p class="where">A short list of “things you’re known for” (3–6 bullets)</p>
+              </div>
+              <div class="when">Now</div>
+            </div>
+            <ul>
+              <li>Example: “Design-system thinking with practical guardrails.”</li>
+              <li>Example: “Testing habits that keep refactors boring (in a good way).”</li>
+              <li>Example: “Performance and accessibility as defaults, not afterthoughts.”</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="row">
+              <div>
+                <p class="role">Selected builds</p>
+                <p class="where">Add 2–4 projects with a one-line purpose + what you contributed</p>
+              </div>
+              <div class="when">Highlights</div>
+            </div>
+            <ul>
+              <li><strong>Project Name</strong> — what it does · what you improved · (link)</li>
+              <li><strong>Project Name</strong> — what it does · what you improved · (link)</li>
+              <li><strong>Project Name</strong> — what it does · what you improved · (link)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="row">
+              <div>
+                <p class="role">Tools I reach for</p>
+                <p class="where">Keep this short; only include what you truly use</p>
+              </div>
+              <div class="when">Stack</div>
+            </div>
+            <ul>
+              <li>Frontend: (e.g., Vue/Nuxt, React, TypeScript)</li>
+              <li>Testing: (e.g., Vitest/Jest, Playwright/Cypress)</li>
+              <li>Platform: (e.g., AWS, Terraform, CI/CD)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="involvements" class="reveal">
+        <div class="section-title">
+          <h2>Outside the commit log</h2>
+          <span>Involvements</span>
+        </div>
+
+        <div class="stack">
+          <div class="card">
+            <div class="row">
+              <div>
+                <p class="role">Community / Mentorship / Speaking</p>
+                <p class="where">Add what you do beyond your day job</p>
+              </div>
+              <div class="when">Ongoing</div>
+            </div>
+            <ul>
+              <li>Security champions, guilds, meetups, mentoring, reviews, writing.</li>
+              <li>Talk/panel/workshop (topic + where + link).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="row">
+              <div>
+                <p class="role">Learning lane</p>
+                <p class="where">What you’re currently exploring and why it matters to you</p>
+              </div>
+              <div class="when">This year</div>
+            </div>
+            <ul>
+              <li>Example: “React patterns + accessibility-friendly UI primitives.”</li>
+              <li>Example: “Technical leadership: scope changes, ownership, and shipping confidently.”</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- RIGHT: Quick scan -->
+    <div class="stack">
+      <section class="reveal" aria-label="Quick scan">
+        <div class="section-title">
+          <h2>Quick scan</h2>
+          <span>At a glance</span>
+        </div>
+
+        <div class="stack">
+          <div class="mini">
+            <h3>Core skills</h3>
+            <div class="pillrow">
+              <span class="pill">TypeScript</span>
+              <span class="pill">Vue / Nuxt</span>
+              <span class="pill">React</span>
+              <span class="pill">Design Systems</span>
+              <span class="pill">Testing</span>
+              <span class="pill">Accessibility</span>
+              <span class="pill">Performance</span>
+            </div>
+          </div>
+
+          <div class="mini">
+            <h3>What I optimize for</h3>
+            <div class="two-col">
+              <span class="pill">Clarity</span>
+              <span class="pill">Consistency</span>
+              <span class="pill">Maintainability</span>
+              <span class="pill">Speed</span>
+              <span class="pill">Reliability</span>
+              <span class="pill">Simplicity</span>
+            </div>
+          </div>
+
+          <div class="mini">
+            <h3>Signals</h3>
+            <ul>
+              <li>Replace with a short “proof” line (metrics, scope, scale).</li>
+              <li>Replace with another credibility nugget (ownership, leadership).</li>
+              <li>Replace with one more (users served, revenue impacted, latency improved).</li>
+            </ul>
+          </div>
+
+          <div class="mini" id="contact">
+            <h3>Contact</h3>
+            <p style="margin:0; color: var(--muted); font-size: 13px; line-height: 1.6;">
+              Email: <a href="mailto:you@example.com">you@example.com</a><br/>
+              LinkedIn: <a href="#">linkedin.com/in/your-handle</a><br/>
+              GitHub: <a href="#">github.com/your-handle</a><br/>
+              Location: <span style="color: rgba(255,255,255,.78);">United Kingdom</span>
+            </p>
+
+            <div class="sep"></div>
+
+            <a class="btn" href="#" style="width:100%; justify-content:center;">
+              Book a chat ↘
+            </a>
+            <p style="margin:10px 0 0; color: var(--muted); font-size: 12px;">
+              Tip: replace “Book a chat” with Calendly or a simple mailto.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal" aria-label="Small details">
+        <div class="section-title">
+          <h2>Small details</h2>
+          <span>Extras</span>
+        </div>
+        <div class="mini">
+          <h3>Writing / Notes</h3>
+          <ul>
+            <li><strong>Post title</strong> — one sentence summary · (link)</li>
+            <li><strong>Post title</strong> — one sentence summary · (link)</li>
+          </ul>
+        </div>
+        <div class="mini" style="margin-top: 12px;">
+          <h3>Certifications</h3>
+          <ul>
+            <li>Certification name — issuer (year)</li>
+            <li>Certification name — issuer (year)</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="reveal">
+    © <span id="year"></span> Sam Bruton · Built as a single HTML file · Minimal by design
+  </footer>
+</main>
+
+<script>
+  // small niceties: year + gentle reveal on scroll
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const els = Array.from(document.querySelectorAll(".reveal"));
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) e.target.classList.add("on");
+    }
+  }, { threshold: 0.12 });
+
+  els.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
