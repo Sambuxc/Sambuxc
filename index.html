@@ -6,8 +6,7 @@
   <meta name="description" content="Sam Bruton — Resume" />
   <title>Sam Bruton</title>
 
-  <!-- Optional favicon (swap with yours) -->
-  <!-- <link rel="icon" href="/favicon.ico" /> -->
+   <link rel="icon" href="./assets/favicon.ico" />
 
   <style>
     :root{
@@ -92,10 +91,11 @@
       place-items: center;
       letter-spacing: .02em;
       font-weight: 700;
+      overflow: hidden;
     }
-    .logo span{
-      font-family: var(--mono);
-      font-size: 14px;
+    .logo img{
+      width: inherit;
+      height: inherit;
       opacity: .9;
     }
     .name{
@@ -394,7 +394,13 @@
 <header>
   <div class="top">
     <a class="mark" href="#top" aria-label="Home">
-      <div class="logo" aria-hidden="true"><span>SB</span></div>
+      <div class="logo" aria-hidden="true">
+        <!-- opportunity to convert to svg for instance load (zero http reqs) -->
+        <img
+          src="./assets/sb-logo.svg"
+          alt="sam bruton frontend engineering logo"
+        />
+      </div>
       <div class="name">
         <strong>Sam Bruton</strong>
         <small>Front-End Engineer · Resume</small>
