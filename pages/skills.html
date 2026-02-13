@@ -1,0 +1,477 @@
+<section class="skills-wrap" id="apply-skills">
+  <div class="skills-grid">
+    <!-- Left -->
+    <div class="skills-left">
+      <h2 class="skills-h2">
+        <span id="apply-skills-section-title">Skills</span>
+      </h2>
+    </div>
+
+    <!-- Middle -->
+    <div class="skills-main">
+      <div class="skills-title-row">
+        <h3 class="skills-h3">Skill Proficiency Levels</h3>
+
+        <div class="skills-info">
+          <button
+                  class="skills-info-btn"
+                  id="global-skills-proficiency-popover-info-icon"
+                  type="button"
+                  aria-label="Skill Proficiency Levels"
+                  aria-expanded="false"
+                  aria-controls="skillsInfoPopover"
+          >
+            <!-- info icon (inline svg) -->
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+              <circle cx="10" cy="10" r="8.5" fill="none" stroke="#1a73e8" stroke-width="2" />
+              <circle cx="10" cy="6" r="1.2" fill="#1a73e8" />
+              <path d="M10 9.2v6" stroke="#1a73e8" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+
+          <div class="skills-popover" id="skillsInfoPopover" role="dialog" aria-label="Skill Proficiency Levels info">
+            <div class="skills-popover-title">Skill Proficiency Levels</div>
+            <p class="skills-popover-text">
+              1-Beginner → 5-Expert. This is a display-only example component.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proficiency bar -->
+      <section id="skills-proficiency-bar-section" class="skills-bar-section" dir="ltr">
+        <ol
+                role="list"
+                class="skills-labels"
+                aria-label="Skill proficiency levels from beginner to expert"
+        >
+          <li role="listitem" class="skills-label">1-Beginner</li>
+          <li role="listitem" class="skills-label">2-Basic</li>
+          <li role="listitem" class="skills-label">3-Proficient</li>
+          <li role="listitem" class="skills-label">4-Advanced</li>
+          <li role="listitem" class="skills-label">5-Expert</li>
+        </ol>
+
+        <div class="skills-bar" aria-hidden="true">
+          <div class="skills-segments">
+            <div class="skills-seg" data-seg="1"></div>
+            <div class="skills-seg" data-seg="2"></div>
+            <div class="skills-seg" data-seg="3"></div>
+            <div class="skills-seg" data-seg="4"></div>
+            <div class="skills-seg" data-seg="5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories -->
+      <ul role="list" class="skills-cats" aria-label="Skill Proficiency Levels">
+        <li role="listitem" class="skills-cat">
+          <div class="skills-cat-header">
+            <div class="skills-box" data-level-id="EXP" aria-hidden="true"></div>
+            <h4 class="skills-cat-title">5-Expert</h4>
+          </div>
+          <div class="skills-items">
+            <span class="skills-item">Agile Development, </span>
+            <span class="skills-item">CSS3/Sass/TailwindCSS, </span>
+            <span class="skills-item">Git/GitHub, </span>
+            <span class="skills-item">HTML5, </span>
+            <span class="skills-item">JavaScript (ES6+), </span>
+            <span class="skills-item">Mentoring, </span>
+            <span class="skills-item">Problem Solving, </span>
+            <span class="skills-item">Scrum, </span>
+            <span class="skills-item">UI/UX, </span>
+            <span class="skills-item">Webstorm</span>
+          </div>
+          <div class="skills-divider" aria-hidden="true"></div>
+        </li>
+
+        <li role="listitem" class="skills-cat">
+          <div class="skills-cat-header">
+            <div class="skills-box" data-level-id="ADV" aria-hidden="true"></div>
+            <h4 class="skills-cat-title">4-Advanced</h4>
+          </div>
+          <div class="skills-items">
+            <span class="skills-item">CI/CD, </span>
+            <span class="skills-item">DevOps, </span>
+            <span class="skills-item">Node.js, </span>
+            <span class="skills-item">TypeScript, </span>
+            <span class="skills-item">Unit Testing, </span>
+            <span class="skills-item">Vue.js, </span>
+            <span class="skills-item">Webpack</span>
+          </div>
+          <div class="skills-divider" aria-hidden="true"></div>
+        </li>
+
+        <li role="listitem" class="skills-cat">
+          <div class="skills-cat-header">
+            <div class="skills-box" data-level-id="PRO" aria-hidden="true"></div>
+            <h4 class="skills-cat-title">3-Proficient</h4>
+          </div>
+          <div class="skills-items">
+            <span class="skills-item">Accessibility, </span>
+            <span class="skills-item">AWS, </span>
+            <span class="skills-item">TDD, </span>
+            <span class="skills-item">Terraform, </span>
+            <span class="skills-item">Xcode</span>
+          </div>
+          <div class="skills-divider" aria-hidden="true"></div>
+        </li>
+
+        <li role="listitem" class="skills-cat">
+          <div class="skills-cat-header">
+            <div class="skills-box" data-level-id="BA" aria-hidden="true"></div>
+            <h4 class="skills-cat-title">2-Basic</h4>
+          </div>
+          <div class="skills-items">
+            <span class="skills-item">Swift</span>
+          </div>
+          <div class="skills-divider" aria-hidden="true"></div>
+        </li>
+
+        <li role="listitem" class="skills-cat">
+          <div class="skills-cat-header">
+            <div class="skills-box" data-level-id="BE" aria-hidden="true"></div>
+            <h4 class="skills-cat-title">1-Beginner</h4>
+          </div>
+          <div class="skills-items">
+            <span class="skills-item">Not specified</span>
+          </div>
+          <div class="skills-divider" aria-hidden="true"></div>
+        </li>
+
+        <li role="listitem" class="skills-cat">
+          <div class="skills-cat-header">
+            <div class="skills-box" data-level-id="NR" aria-hidden="true"></div>
+            <h4 class="skills-cat-title">Not rated</h4>
+          </div>
+          <div class="skills-items">
+            <span class="skills-item">Not specified</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right -->
+    <div class="skills-right">
+      <button class="skills-edit" id="apply-skills-edit-button" type="button" aria-label="Edit Skills">
+        Edit
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    /* page-like neutrals */
+    --skills-text: #111827;
+    --skills-muted: #6b7280;
+    --skills-line: #e5e7eb;
+    --skills-link: #1a73e8;
+
+    /* bar gradient segments (approx from screenshot) */
+    --seg1: #73aedd; /* 1 */
+    --seg2: #6f8bd2; /* 2 */
+    --seg3: #6a71c8; /* 3 */
+    --seg4: #705cbe; /* 4 */
+    --seg5: #7d39b7; /* 5 */
+
+    /* legend boxes */
+    --exp: #6f2dbd;
+    --adv: #6256c8;
+    --pro: #6672d2;
+    --bas: #6d89d8;
+    --beg: #74b0df;
+    --nr: #9e9e9e;
+  }
+
+  /* outer section spacing similar to screenshot */
+  .skills-wrap {
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+    color: var(--skills-text);
+    padding: 18px 0 28px;
+    border-bottom: 1px solid var(--skills-line);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 260px minmax(520px, 1fr) 90px;
+    column-gap: 42px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Left title */
+  .skills-h2 {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* Right edit */
+  .skills-right {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 6px;
+  }
+  .skills-edit {
+    background: transparent;
+    border: 0;
+    padding: 6px 6px;
+    color: var(--skills-link);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .skills-edit:hover {
+    text-decoration: underline;
+  }
+  .skills-edit:focus-visible {
+    outline: 3px solid rgba(26, 115, 232, 0.25);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  /* Title row with info icon */
+  .skills-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2px;
+    margin-bottom: 18px;
+  }
+  .skills-h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .skills-info {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+  .skills-info-btn {
+    border: 0;
+    background: transparent;
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .skills-info-btn:focus-visible {
+    outline: 3px solid rgba(26, 115, 232, 0.25);
+    outline-offset: 2px;
+  }
+
+  /* Popover (optional) */
+  .skills-popover {
+    position: absolute;
+    top: 34px;
+    left: -4px;
+    width: 300px;
+    background: #fff;
+    border: 1px solid var(--skills-line);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(17, 24, 39, 0.12);
+    padding: 12px 12px 10px;
+    display: none;
+    z-index: 10;
+  }
+  .skills-popover[aria-hidden="false"] {
+    display: block;
+  }
+  .skills-popover-title {
+    font-weight: 600;
+    margin: 0 0 6px;
+    font-size: 14px;
+  }
+  .skills-popover-text {
+    margin: 0;
+    color: var(--skills-muted);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  /* Bar section */
+  .skills-bar-section {
+    margin: 22px 0 26px;
+  }
+
+  .skills-labels {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    margin: 0 0 12px;
+    padding: 0;
+    list-style: none;
+    color: var(--skills-muted);
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .skills-label {
+    white-space: nowrap;
+  }
+
+  .skills-bar {
+    margin-top: 0;
+  }
+
+  .skills-segments {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: 28px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .skills-seg {
+    position: relative;
+  }
+  .skills-seg[data-seg="1"] {
+    background: var(--seg1);
+  }
+  .skills-seg[data-seg="2"] {
+    background: var(--seg2);
+  }
+  .skills-seg[data-seg="3"] {
+    background: var(--seg3);
+  }
+  .skills-seg[data-seg="4"] {
+    background: var(--seg4);
+  }
+  .skills-seg[data-seg="5"] {
+    background: var(--seg5);
+  }
+  /* thin separators like screenshot */
+  .skills-seg:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.65);
+  }
+
+  /* Categories */
+  .skills-cats {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .skills-cat {
+    padding: 18px 0 10px;
+  }
+
+  .skills-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+
+  .skills-box {
+    width: 54px;
+    height: 36px;
+    border-radius: 6px;
+    flex: 0 0 auto;
+  }
+  .skills-box[data-level-id="EXP"] {
+    background: var(--exp);
+  }
+  .skills-box[data-level-id="ADV"] {
+    background: var(--adv);
+  }
+  .skills-box[data-level-id="PRO"] {
+    background: var(--pro);
+  }
+  .skills-box[data-level-id="BA"] {
+    background: var(--bas);
+  }
+  .skills-box[data-level-id="BE"] {
+    background: var(--beg);
+  }
+  .skills-box[data-level-id="NR"] {
+    background: var(--nr);
+  }
+
+  .skills-cat-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .skills-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 22px;
+    line-height: 1.55;
+    color: #1f2937;
+    padding-left: 68px; /* aligns text under title, like screenshot */
+  }
+
+  .skills-item {
+    white-space: pre;
+  }
+
+  .skills-divider {
+    height: 1px;
+    background: var(--skills-line);
+    margin-top: 16px;
+    margin-left: 68px;
+  }
+
+  /* Responsive (keeps same feel, stacks like typical profile layouts) */
+  @media (max-width: 980px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+      row-gap: 14px;
+    }
+    .skills-right {
+      justify-content: flex-start;
+      padding-top: 0;
+    }
+    .skills-items,
+    .skills-divider {
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+</style>
+
+<script>
+  // Optional: simple accessible popover toggle for the info icon
+  (function () {
+    const btn = document.getElementById("global-skills-proficiency-popover-info-icon");
+    const pop = document.getElementById("skillsInfoPopover");
+    if (!btn || !pop) return;
+
+    const close = () => {
+      btn.setAttribute("aria-expanded", "false");
+      pop.setAttribute("aria-hidden", "true");
+    };
+    const open = () => {
+      btn.setAttribute("aria-expanded", "true");
+      pop.setAttribute("aria-hidden", "false");
+    };
+    close();
+
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      isOpen ? close() : open();
+    });
+
+    document.addEventListener("click", close);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+  })();
+</script>
