@@ -28,6 +28,29 @@
 			height: 100vh; /* Full viewport height */
 			width: 100%;
 		}
+
+		.logo-wrapper {
+			position: relative;
+			display: inline-block;
+		}
+
+		.external-link-icon {
+			position: absolute;
+			top: 4px;
+			right: -4px;
+			width: 16px;
+			height: 16px;
+			fill: none;
+			stroke: #FEFEFF;
+			stroke-width: 2;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			opacity: 0.7;
+		}
+
+		a:hover .external-link-icon {
+			opacity: 1;
+		}
 	</style>
 </head>
 
@@ -39,13 +62,20 @@
 
 <main>
 	<a href="https://www.linkedin.com/in/sam-bruton/" target="_blank">
-		<img
-			class="logo"
-			src="assets/sb-logo-transparent.svg"
-			alt="Sam Bruton Software Engineer Developer Logo"
-			width="190"
-			height="190"
-		>
+		<span class="logo-wrapper">
+			<img
+				class="logo"
+				src="assets/sb-logo-transparent.svg"
+				alt="Sam Bruton Software Engineer Developer Logo"
+				width="190"
+				height="190"
+			>
+			<svg class="external-link-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+				<polyline points="15 3 21 3 21 9"/>
+				<line x1="10" y1="14" x2="21" y2="3"/>
+			</svg>
+		</span>
 	</a>
 </main>
 
