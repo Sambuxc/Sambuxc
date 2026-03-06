@@ -3,81 +3,351 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<meta name="description" content="Sam Bruton — Resume"/>
-	<title>Sam Bruton - Web Developer</title>
+	<meta name="description" content="Sam Bruton — Frontend Developer Portfolio"/>
+	<title>Sam Bruton — Frontend Developer</title>
 
 	<link rel="icon" href="./assets/favicon.ico"/>
 	<style>
+		/* ── Reset & Base ── */
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 		body {
-			margin: 0;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 			background: #0b0c0f;
-			color: #FEFEFF;
+			color: #e8e8ea;
+			line-height: 1.7;
+			-webkit-font-smoothing: antialiased;
 		}
 
-		main {
+		/* ── Layout ── */
+		.container {
+			max-width: 900px;
 			margin: 0 auto;
+			padding: 60px 28px 80px;
+		}
+
+		/* ── Header / Logo ── */
+		.site-header {
 			display: flex;
-			flex-direction: column;
-			justify-content: flex-end; /* Align content to the bottom */
-			align-items: center; /* Center horizontally */
-			height: 100vh; /* Full viewport height */
-			width: 100%;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 64px;
 		}
 
-		.logo-wrapper {
+		.site-header a { text-decoration: none; }
+
+		.site-header img {
+			display: block;
+			width: 56px;
+			height: 56px;
+		}
+
+		.header-links {
+			display: flex;
+			gap: 20px;
+		}
+
+		.header-links a {
+			color: #888;
+			font-size: 0.875rem;
+			text-decoration: none;
+			transition: color 0.2s;
+		}
+
+		.header-links a:hover { color: #fff; }
+
+		/* ── Profile Photo ── */
+		.profile-photo {
+			width: 140px;
+			height: 140px;
+			border-radius: 50%;
+			background: #1a1b1f;
+			border: 2px solid #2a2b30;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 32px;
+			color: #555;
+			font-size: 0.75rem;
+			letter-spacing: 0.02em;
+		}
+
+		/* ── Section Styles ── */
+		section { margin-bottom: 56px; }
+
+		.section-label {
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: #666;
+			margin-bottom: 20px;
+		}
+
+		h1 {
+			font-size: 2rem;
+			font-weight: 700;
+			color: #fff;
+			line-height: 1.3;
+			margin-bottom: 8px;
+		}
+
+		.subtitle {
+			font-size: 1.125rem;
+			color: #888;
+			margin-bottom: 24px;
+		}
+
+		p {
+			color: #b0b0b4;
+			font-size: 1rem;
+			margin-bottom: 16px;
+		}
+
+		/* ── Highlights list ── */
+		.highlights {
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-top: 16px;
+		}
+
+		.highlights li {
+			background: #16171b;
+			border: 1px solid #222328;
+			border-radius: 6px;
+			padding: 8px 14px;
+			font-size: 0.85rem;
+			color: #aaa;
+		}
+
+		/* ── Experience Timeline ── */
+		.experience-list {
+			list-style: none;
+			border-left: 2px solid #1e1f24;
+			padding-left: 28px;
+		}
+
+		.experience-list li {
 			position: relative;
-			display: inline-block;
+			margin-bottom: 36px;
 		}
 
-		.external-link-icon {
+		.experience-list li:last-child { margin-bottom: 0; }
+
+		.experience-list li::before {
+			content: "";
 			position: absolute;
-			top: 4px;
-			right: -4px;
-			width: 16px;
-			height: 16px;
-			fill: none;
-			stroke: #FEFEFF;
-			stroke-width: 2;
-			stroke-linecap: round;
-			stroke-linejoin: round;
-			opacity: 0.7;
+			left: -34px;
+			top: 6px;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: #2a2b30;
+			border: 2px solid #444;
 		}
 
-		a:hover .external-link-icon {
-			opacity: 1;
+		.exp-role {
+			font-size: 1rem;
+			font-weight: 600;
+			color: #e0e0e2;
+		}
+
+		.exp-company {
+			font-size: 0.9rem;
+			color: #888;
+			margin-top: 2px;
+		}
+
+		.exp-meta {
+			font-size: 0.8rem;
+			color: #555;
+			margin-top: 4px;
+		}
+
+		/* ── Values / What Matters ── */
+		.values-list {
+			list-style: none;
+			columns: 2;
+			gap: 12px;
+		}
+
+		.values-list li {
+			padding: 4px 0;
+			font-size: 0.95rem;
+			color: #aaa;
+		}
+
+		.values-list li::before {
+			content: "•";
+			margin-right: 10px;
+			color: #555;
+		}
+
+		/* ── Footer ── */
+		.site-footer {
+			margin-top: 40px;
+			padding-top: 32px;
+			border-top: 1px solid #1a1b1f;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 12px;
+		}
+
+		.site-footer p {
+			color: #555;
+			font-size: 0.8rem;
+			margin: 0;
+		}
+
+		.site-footer a {
+			color: #888;
+			font-size: 0.8rem;
+			text-decoration: none;
+			transition: color 0.2s;
+		}
+
+		.site-footer a:hover { color: #fff; }
+
+		/* ── Responsive ── */
+		@media (max-width: 600px) {
+			.container { padding: 40px 20px 60px; }
+			h1 { font-size: 1.6rem; }
+			.values-list { columns: 1; }
+			.site-header { flex-wrap: wrap; gap: 16px; }
 		}
 	</style>
 </head>
 
 <body>
 
-<header>
+<div class="container">
 
-</header>
+	<!-- Header -->
+	<header class="site-header">
+		<a href="/">
+			<img src="assets/sb-logo-transparent.svg" alt="Sam Bruton Front End Engineer Logo">
+		</a>
+		<nav class="header-links">
+			<a href="https://www.linkedin.com/in/sam-bruton/" target="_blank">LinkedIn</a>
+			<a href="https://github.com/Sambuxc" target="_blank">GitHub</a>
+			<a href="https://www.thefrontendist.com" target="_blank">Blog</a>
+		</nav>
+	</header>
 
-<main>
-	<a href="https://www.linkedin.com/in/sam-bruton/" target="_blank">
-		<span class="logo-wrapper">
-			<img
-				class="logo"
-				src="assets/sb-logo-transparent.svg"
-				alt="Sam Bruton Software Engineer Developer Logo"
-				width="190"
-				height="190"
-			>
-			<svg class="external-link-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-				<polyline points="15 3 21 3 21 9"/>
-				<line x1="10" y1="14" x2="21" y2="3"/>
-			</svg>
-		</span>
-	</a>
-</main>
+	<!-- About -->
+	<section>
+		<div class="section-label">About</div>
+
+		<!-- Profile photo placeholder — replace the div with an <img> when ready -->
+		<div class="profile-photo" aria-label="Profile photo placeholder">photo</div>
+
+		<h1>Sam Bruton</h1>
+		<p class="subtitle">Front-End Engineer</p>
+		<small>Somewhere between Manchester & Liverpool</small>
+
+		<p>
+			Frontend developer with 7+ years of experience building reactive JavaScript web apps
+			and crafting Shopify &amp; WordPress theme customisations. I write about web development
+			and the developer's mindset at
+			<a href="https://www.thefrontendist.com" target="_blank" style="color:#ccc;text-decoration:underline;text-underline-offset:3px;">TheFrontendist.com</a>.
+		</p>
+
+		<p>
+			I got into web development creating fansites for Habbo Hotel in the early 2000s — designing,
+			coding, and hosting sites with shoutcast radios so visitors could enjoy music while exploring
+			game guides and in-game furni prices.
+		</p>
+
+		<ul class="highlights">
+			<li>🌱 Learning to be a better writer &amp; communicator</li>
+			<li>👯 Open new ways of working</li>
+			<li>💬 Mentor — helping others getting started with web development</li>
+			<li>🏂 Snowboarding & Skating</li>
+		</ul>
+	</section>
+
+	<!-- Work Experience -->
+	<section>
+		<div class="section-label">Work Experience</div>
+		<ul class="experience-list">
+			<li>
+				<div class="exp-role">Front-End Engineer</div>
+				<div class="exp-company">CAVU · Full-time</div>
+				<div class="exp-meta">Jan 2024 – Present · Manchester Area · Remote</div>
+			</li>
+			<li>
+				<div class="exp-role">Web Development Mentor</div>
+				<div class="exp-company">OpenClassrooms · Part-time</div>
+				<div class="exp-meta">Apr 2022 – Jan 2024 · 1 yr 10 mos · Remote</div>
+			</li>
+			<li>
+				<div class="exp-role">Front-End Shopify Specialist</div>
+				<div class="exp-company">Squashed Pixel (Shopify Agency) · Full-time</div>
+				<div class="exp-meta">Aug 2023 – Nov 2023 · 4 mos · Remote</div>
+			</li>
+			<li>
+				<div class="exp-role">Front-End Developer (Shopify Theming &amp; Brand Development)</div>
+				<div class="exp-company">Underexposed · Full-time</div>
+				<div class="exp-meta">Jun 2022 – Jun 2023 · 1 yr 1 mo · Hybrid</div>
+			</li>
+			<li>
+				<div class="exp-role">Inspiring Mentor</div>
+				<div class="exp-company">Catch22 · Part-time</div>
+				<div class="exp-meta">Feb 2023 – Mar 2023 · 2 mos · Remote</div>
+			</li>
+			<li>
+				<div class="exp-role">WordPress Specialist</div>
+				<div class="exp-company">Blaze Media · Full-time</div>
+				<div class="exp-meta">Nov 2021 – Jun 2022 · 8 mos · Liverpool · On-site</div>
+			</li>
+			<li>
+				<div class="exp-role">Front-End WordPress Specialist</div>
+				<div class="exp-company">Pure Organic CBD &amp; Pure Organic Golf · Full-time</div>
+				<div class="exp-meta">Jan 2021 – May 2021 · 5 mos · Hybrid</div>
+			</li>
+			<li>
+				<div class="exp-role">Freelance Web Developer</div>
+				<div class="exp-company">Upwork · Full-time</div>
+				<div class="exp-meta">Jan 2017 – Jan 2020 · 3 yrs 1 mo · Remote</div>
+			</li>
+			<li>
+				<div class="exp-role">Website Designer &amp; Domain Host Management</div>
+				<div class="exp-company">BlueFireHost · Full-time</div>
+				<div class="exp-meta">Jan 2010 – Jun 2015 · 5 yrs 6 mos · Remote</div>
+			</li>
+			<li>
+				<div class="exp-role">Android App Developer Intern</div>
+				<div class="exp-company">Result Group Inc · Full-time</div>
+				<div class="exp-meta">Aug 2013 – Jul 2014 · 1 yr · On-site</div>
+			</li>
+		</ul>
+	</section>
+
+	<!-- What Matters -->
+	<section>
+		<div class="section-label">What Matters to Me</div>
+		<ul class="values-list">
+			<li>Delivering small and large projects</li>
+			<li>Code reviewing</li>
+			<li>Code documentation</li>
+			<li>Simplification of code</li>
+			<li>Having fun doing it</li>
+			<li>Helping others</li>
+			<li>Skating</li>
+		</ul>
+	</section>
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<p>&copy; 2026 Sam Bruton</p>
+		<a href="http://www.buymeacoffee.com/sambruton" target="_blank">☕ Buy me a coffee</a>
+	</footer>
+
+</div>
 
 </body>
 </html>
