@@ -1,0 +1,7 @@
+.editorconfig
+.prettierrc
+.git*
+node_modules
+.github
+.env
+README.md
