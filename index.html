@@ -9,7 +9,11 @@
 	<link rel="icon" href="./assets/favicon.ico"/>
 	<style>
 		/* ── Reset & Base ── */
-		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		*, *::before, *::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
 
 		body {
 			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -34,7 +38,9 @@
 			margin-bottom: 64px;
 		}
 
-		.site-header a { text-decoration: none; }
+		.site-header a {
+			text-decoration: none;
+		}
 
 		.site-header img {
 			display: block;
@@ -54,7 +60,9 @@
 			transition: color 0.2s;
 		}
 
-		.header-links a:hover { color: #fff; }
+		.header-links a:hover {
+			color: #fff;
+		}
 
 		/* ── Profile Photo ── */
 		.profile-photo {
@@ -73,7 +81,9 @@
 		}
 
 		/* ── Section Styles ── */
-		section { margin-bottom: 56px; }
+		section {
+			margin-bottom: 56px;
+		}
 
 		.section-label {
 			font-size: 0.75rem;
@@ -134,7 +144,9 @@
 			margin-bottom: 36px;
 		}
 
-		.experience-list li:last-child { margin-bottom: 0; }
+		.experience-list li:last-child {
+			margin-bottom: 0;
+		}
 
 		.experience-list li::before {
 			content: "";
@@ -211,14 +223,28 @@
 			transition: color 0.2s;
 		}
 
-		.site-footer a:hover { color: #fff; }
+		.site-footer a:hover {
+			color: #fff;
+		}
 
 		/* ── Responsive ── */
 		@media (max-width: 600px) {
-			.container { padding: 40px 20px 60px; }
-			h1 { font-size: 1.6rem; }
-			.values-list { columns: 1; }
-			.site-header { flex-wrap: wrap; gap: 16px; }
+			.container {
+				padding: 40px 20px 60px;
+			}
+
+			h1 {
+				font-size: 1.6rem;
+			}
+
+			.values-list {
+				columns: 1;
+			}
+
+			.site-header {
+				flex-wrap: wrap;
+				gap: 16px;
+			}
 		}
 	</style>
 </head>
@@ -239,12 +265,9 @@
 		</nav>
 	</header>
 
-	<!-- About -->
 	<section>
-		<div class="section-label">About</div>
-
-		<!-- Profile photo placeholder — replace the div with an <img> when ready -->
-		<div class="profile-photo" aria-label="Profile photo placeholder">photo</div>
+		<img class="profile-photo" aria-label="Profile photo placeholder"
+				 src="assets/sam-bruton-frontend-developer-profile-photo.jpg" alt="Sam Bruton profile photo"/>
 
 		<h1>Sam Bruton</h1>
 		<p class="subtitle">Front-End Engineer</p>
@@ -254,7 +277,8 @@
 			Frontend developer with 7+ years of experience building reactive JavaScript web apps
 			and crafting Shopify &amp; WordPress theme customisations. I write about web development
 			and the developer's mindset at
-			<a href="https://www.thefrontendist.com" target="_blank" style="color:#ccc;text-decoration:underline;text-underline-offset:3px;">TheFrontendist.com</a>.
+			<a href="https://www.thefrontendist.com" target="_blank"
+				 style="color:#ccc;text-decoration:underline;text-underline-offset:3px;">TheFrontendist.com</a>.
 		</p>
 
 		<p>
@@ -268,6 +292,41 @@
 			<li>👯 Open new ways of working</li>
 			<li>💬 Mentor — helping others getting started with web development</li>
 			<li>🏂 Snowboarding & Skating</li>
+		</ul>
+	</section>
+
+	<!-- What Matters -->
+	<section>
+		<div class="section-label">What Matters to Me</div>
+		<ul class="values-list">
+			<li>Delivering excellent user-experience</li>
+			<li>Code reviewing socratically</li>
+			<li>Feature documentation</li>
+			<li>Having fun!</li>
+			<li>Guiding others to success</li>
+			<li>Learning &amp; growing</li>
+		</ul>
+	</section>
+
+	<!-- Skills -->
+	<section>
+		<div class="section-label">Skills</div>
+		<ul class="values-list">
+			<li>Critically reviewing features and ensuring they are implemented correctly</li>
+			<li>Building responsive, accessible, and user-friendly web experiences for all</li>
+			<li>HTML, CSS, TypeScript, Vue.js, Node and Cloud infrastructure deployments</li>
+			<li>Writing clean, maintainable code that follows best practices and coding standards</li>
+			<li>Delivering technical solutions to high-quality products</li>
+		</ul>
+	</section>
+
+	<!-- To the Future -->
+	<section>
+		<div class="section-label">To the Future</div>
+		<ul class="values-list">
+			<li>Maintaining a backend Node.js API server integrated with client-side applications</li>
+			<li>Expanding knowledge of backend development and cloud infrastructure with CI/CD pipelines</li>
+			<li>Learning Swift and SwiftUI for iOS development</li>
 		</ul>
 	</section>
 
@@ -325,41 +384,6 @@
 				<div class="exp-company">Result Group Inc · Full-time</div>
 				<div class="exp-meta">Aug 2013 – Jul 2014 · 1 yr · On-site</div>
 			</li>
-		</ul>
-	</section>
-
-	<!-- What Matters -->
-	<section>
-		<div class="section-label">What Matters to Me</div>
-		<ul class="values-list">
-			<li>Delivering excellent user-experience</li>
-			<li>Code reviewing socratically</li>
-			<li>Feature documentation</li>
-			<li>Having fun!</li>
-			<li>Guiding others to success</li>
-			<li>Learning &amp; growing</li>
-		</ul>
-	</section>
-
-	<!-- Skills -->
-	<section>
-		<div class="section-label">Skills</div>
-		<ul class="values-list">
-			<li>Critically reviewing features and ensuring they are implemented correctly</li>
-			<li>Building responsive, accessible, and user-friendly web experiences for all</li>
-			<li>HTML, CSS, TypeScript, Vue.js, Node and Cloud infrastructure deployments</li>
-			<li>Writing clean, maintainable code that follows best practices and coding standards</li>
-			<li>Delivering technical solutions to high-quality products</li>
-		</ul>
-	</section>
-
-	<!-- To the Future -->
-	<section>
-		<div class="section-label">To the Future</div>
-		<ul class="values-list">
-			<li>Maintaining a backend Node.js API server integrated with client-side applications</li>
-			<li>Expanding knowledge of backend development and cloud infrastructure with CI/CD pipelines</li>
-			<li>Learning Swift and SwiftUI for iOS development</li>
 		</ul>
 	</section>
 
