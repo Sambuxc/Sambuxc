@@ -228,6 +228,41 @@
 			color: #fff;
 		}
 
+		/* ── Collapsible Experience ── */
+		.exp-fade-hint {
+			opacity: 0.45;
+			transition: opacity 0.3s ease;
+		}
+
+		.experience-list.expanded .exp-fade-hint {
+			opacity: 1;
+		}
+
+		.exp-hidden {
+			display: none;
+		}
+
+		.experience-list.expanded .exp-hidden {
+			display: block;
+		}
+
+		.exp-toggle {
+			background: none;
+			border: 1px solid #2a2b30;
+			border-radius: 6px;
+			color: #888;
+			font-size: 0.85rem;
+			padding: 8px 18px;
+			margin-top: 20px;
+			cursor: pointer;
+			transition: color 0.2s, border-color 0.2s;
+		}
+
+		.exp-toggle:hover {
+			color: #fff;
+			border-color: #444;
+		}
+
 		/* ── Responsive ── */
 		@media (max-width: 600px) {
 			.container {
@@ -359,37 +394,38 @@
 				<div class="exp-company">Underexposed · Full-time</div>
 				<div class="exp-meta">Jun 2022 – Jun 2023 · 1 yr 1 mo · Hybrid</div>
 			</li>
-			<li>
+			<li class="exp-fade-hint">
 				<div class="exp-role">Inspiring Mentor</div>
 				<div class="exp-company">Catch22 · Part-time</div>
 				<div class="exp-meta">Feb 2023 – Mar 2023 · 2 mos · Remote</div>
 			</li>
-			<li>
+			<li class="exp-hidden">
 				<div class="exp-role">WordPress Specialist</div>
 				<div class="exp-company">Blaze Media · Full-time</div>
 				<div class="exp-meta">Nov 2021 – Jun 2022 · 8 mos · Liverpool · On-site</div>
 			</li>
-			<li>
+			<li class="exp-hidden">
 				<div class="exp-role">Front-End WordPress Specialist</div>
 				<div class="exp-company">Pure Organic CBD &amp; Pure Organic Golf · Full-time</div>
 				<div class="exp-meta">Jan 2021 – May 2021 · 5 mos · Hybrid</div>
 			</li>
-			<li>
+			<li class="exp-hidden">
 				<div class="exp-role">Freelance Web Developer</div>
 				<div class="exp-company">Upwork · Full-time</div>
 				<div class="exp-meta">Jan 2017 – Jan 2020 · 3 yrs 1 mo · Remote</div>
 			</li>
-			<li>
+			<li class="exp-hidden">
 				<div class="exp-role">Website Designer &amp; Domain Host Management</div>
 				<div class="exp-company">BlueFireHost · Full-time</div>
 				<div class="exp-meta">Jan 2010 – Jun 2015 · 5 yrs 6 mos · Remote</div>
 			</li>
-			<li>
+			<li class="exp-hidden">
 				<div class="exp-role">Android App Developer Intern</div>
 				<div class="exp-company">Result Group Inc · Full-time</div>
 				<div class="exp-meta">Aug 2013 – Jul 2014 · 1 yr · On-site</div>
 			</li>
 		</ul>
+		<button class="exp-toggle" id="expToggle" aria-expanded="false">View more</button>
 	</section>
 
 	<!-- Footer -->
@@ -399,6 +435,19 @@
 	</footer>
 
 </div>
+
+<script>
+	(function () {
+		const toggle = document.getElementById('expToggle');
+		const list = toggle.previousElementSibling;
+
+		toggle.addEventListener('click', function () {
+			const expanded = list.classList.toggle('expanded');
+			toggle.textContent = expanded ? 'View less' : 'View more';
+			toggle.setAttribute('aria-expanded', expanded);
+		});
+	})();
+</script>
 
 </body>
 </html>
