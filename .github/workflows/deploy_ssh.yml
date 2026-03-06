@@ -1,4 +1,4 @@
-name: Deploy via SSH
+name: Deploy to Fasthosts via SSH
 
 on:
   push:

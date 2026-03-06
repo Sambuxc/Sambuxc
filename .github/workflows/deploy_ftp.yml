@@ -1,4 +1,4 @@
-name: Deploy to Fasthosts
+name: Deploy to Fasthosts via FTP
 
 on:
   push:
