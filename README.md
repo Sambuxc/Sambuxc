@@ -13,7 +13,7 @@
 
 <li>🔭  7 years of experience Frontend development experience utilising Shopify & Wordpress theme customisations and building reactive Javascript web apps</li>
 <li>🌱  I’m learning to be a better writer and communicator</li>
-<li>👯  I’m looking to collaborate on projects that are creative, dynamic and agile</li>
+<li>💻  I’m looking to collaborate on projects that are creative, dynamic and agile</li>
 <li>💬  As a Mentor, ask me how to get started learning Javascript or how to take your skills to the next level 📈</li>
 <li>🛹  Fun fact: I skateboard and ride inline rollerskates</li>
 
