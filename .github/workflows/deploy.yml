@@ -8,6 +8,7 @@ on:
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
+    environment: ftp-deploy
 
     steps:
       - name: Checkout repo
