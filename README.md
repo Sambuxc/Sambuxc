@@ -40,7 +40,7 @@ I saw a niche market in a multi-massive online chatting community (MMOCC) game c
 
 • Critically reviewing features and ensuring they are implemented correctly
 
-• Building responsive, accessible, and user-friendly websites for all
+• Building responsive, accessible, and user-friendly web experiences for all
 
 • HTML, CSS, Typescript, Vue.js, Node and Cloud infrastructure deployments
 
