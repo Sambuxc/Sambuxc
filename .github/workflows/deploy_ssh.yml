@@ -27,4 +27,4 @@ jobs:
           --exclude ".git" \
           --exclude ".github" \
           --exclude "node_modules" \
-          ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/htdocs/
+          ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/htdocs/
