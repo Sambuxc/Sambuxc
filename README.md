@@ -26,6 +26,8 @@ I saw a niche market in a multi-massive online chatting community (MMOCC) game c
 
 • Delivering excellent user-experience
 
+• Collaborating with QE's to create solid end-to-end automation tests
+
 • Code reviewing socratically
 
 • Feature documentation
