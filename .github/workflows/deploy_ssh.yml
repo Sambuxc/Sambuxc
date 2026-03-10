@@ -29,8 +29,8 @@ jobs:
       - name: Deploy with rsync
         run: |
           rsync -avz --delete \
-            -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
             --exclude ".git" \
             --exclude ".github" \
             --exclude "node_modules" \
-            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/htdocs/
+            -e "ssh -i ~/.ssh/gh_deploy_sambuxc -o StrictHostKeyChecking=no" \
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/htdocs/
