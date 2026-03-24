@@ -311,6 +311,81 @@
 			border-color: var(--color-border-hover);
 		}
 
+		/* ── Skills Grouped ── */
+		.skills-group {
+			margin-bottom: 28px;
+		}
+
+		.skills-group:last-child {
+			margin-bottom: 0;
+		}
+
+		.skills-group-label {
+			font-size: 0.8rem;
+			font-weight: 600;
+			color: var(--color-text-faint);
+			letter-spacing: 0.04em;
+			margin-bottom: 12px;
+			padding-bottom: 8px;
+			border-bottom: 1px solid var(--color-border);
+			cursor: pointer;
+			list-style: none;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			transition: color 0.2s;
+		}
+
+		.skills-group-label:hover {
+			color: var(--color-text-secondary);
+		}
+
+		.skills-group-label::-webkit-details-marker {
+			display: none;
+		}
+
+		.skills-group-label::before {
+			content: "▸";
+			font-size: 1.5rem;
+			transition: transform 0.2s ease;
+		}
+
+		.skills-group[open]>.skills-group-label::before {
+			transform: rotate(90deg);
+		}
+
+		.skills-tags {
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+
+		.skills-tags li {
+			background: var(--color-surface);
+			border: 1px solid var(--color-border-medium);
+			border-radius: 6px;
+			padding: 7px 14px;
+			font-size: 0.85rem;
+			color: var(--color-text-muted);
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			transition: border-color 0.2s, background 0.2s;
+		}
+
+		.skills-tags li:hover {
+			border-color: var(--color-border-hover);
+			background: var(--color-surface-raised);
+		}
+
+		.skills-tags li::before {
+			content: "✓";
+			color: #7b8ef5;
+			font-weight: 700;
+			font-size: 0.8rem;
+		}
+
 		/* ── Responsive ── */
 		@media (max-width: 600px) {
 			.container {
@@ -323,6 +398,15 @@
 
 			.values-list {
 				columns: 1;
+			}
+
+			.skills-tags {
+				gap: 6px;
+			}
+
+			.skills-tags li {
+				font-size: 0.8rem;
+				padding: 6px 10px;
 			}
 
 			.site-header {
@@ -395,14 +479,45 @@
 		<!-- Skills -->
 		<section>
 			<div class="section-label">Skills</div>
-			<ul class="values-list">
-				<li>Critically reviewing features and ensuring they are implemented correctly</li>
-				<li>Building responsive, accessible, and user-friendly web experiences for all</li>
-				<li>HTML, CSS, TypeScript, Vue.js, Node and Cloud infrastructure deployments</li>
-				<li>Writing clean, maintainable code that follows best practices and coding standards</li>
-				<li>Delivering technical solutions to high-quality products</li>
-				<li>Teaching ai to behave</li>
-			</ul>
+
+			<details class="skills-group" open>
+				<summary class="skills-group-label">Core</summary>
+				<ul class="skills-tags">
+					<li>HTML5</li>
+					<li>CSS3 / Sass / TailwindCSS</li>
+					<li>JavaScript (ES6+)</li>
+					<li>TypeScript</li>
+					<li>Vue.js</li>
+					<li>Git</li>
+					<li>Agile / Scrum</li>
+					<li>UI / UX</li>
+					<li>Unit Testing</li>
+					<li>Problem Solving</li>
+					<li>Mentoring</li>
+					<li>Webstorm</li>
+				</ul>
+			</details>
+
+			<details class="skills-group" open>
+				<summary class="skills-group-label">Expanding</summary>
+				<ul class="skills-tags">
+					<li>Node.js</li>
+					<li>CI / CD</li>
+					<li>DevOps</li>
+					<li>Accessibility</li>
+					<li>AWS</li>
+					<li>TDD</li>
+					<li>Terraform</li>
+				</ul>
+			</details>
+
+			<details class="skills-group" open>
+				<summary class="skills-group-label">Exploring</summary>
+				<ul class="skills-tags">
+					<li>Xcode</li>
+					<li>Swift</li>
+				</ul>
+			</details>
 		</section>
 
 		<!-- To the Future -->
