@@ -90,6 +90,13 @@
 		}
 
 		/* ── Profile Photo ── */
+		.profile-photo-wrapper {
+			position: relative;
+			width: 140px;
+			height: 140px;
+			margin-bottom: 32px;
+		}
+
 		.profile-photo {
 			object-fit: cover;
 			width: 140px;
@@ -97,13 +104,23 @@
 			border-radius: 50%;
 			background: var(--color-surface-raised);
 			border: 2px solid var(--color-border-strong);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin-bottom: 32px;
-			color: var(--color-text-disabled);
-			font-size: 0.75rem;
-			letter-spacing: 0.02em;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.profile-photo--greyscale {
+			z-index: 2;
+			transition: opacity 0.4s ease;
+		}
+
+		.profile-photo--colour {
+			z-index: 1;
+		}
+
+		.profile-photo-wrapper:hover .profile-photo--greyscale {
+			opacity: 0;
 		}
 
 		/* ── Section Styles ── */
@@ -327,8 +344,12 @@
 		</header>
 
 		<section>
-			<img class="profile-photo" aria-label="Sam Bruton profile photo"
-				src="assets/sam-bruton-frontend-engineer-profile-photo-greyscale.png" alt="Sam Bruton profile photo" />
+			<div class="profile-photo-wrapper">
+				<img class="profile-photo profile-photo--colour"
+					src="assets/sam-bruton-frontend-engineer-profile-photo.png" alt="Sam Bruton profile photo" />
+				<img class="profile-photo profile-photo--greyscale" aria-label="Sam Bruton profile photo"
+					src="assets/sam-bruton-frontend-engineer-profile-photo-greyscale.png" alt="" />
+			</div>
 
 			<h1>Sam Bruton</h1>
 			<p class="subtitle">Front-End Engineer</p>
