@@ -418,6 +418,61 @@
 			font-size: 0.8rem;
 		}
 
+		/* ── Shiny border – first skill in each group ── */
+		@keyframes shiny-border-spin {
+			0% {
+				--shiny-angle: 0deg;
+			}
+
+			100% {
+				--shiny-angle: 360deg;
+			}
+		}
+
+		@property --shiny-angle {
+			syntax: "<angle>";
+			initial-value: 0deg;
+			inherits: false;
+		}
+
+		.skills-tags li:first-child {
+			position: relative;
+			border: none;
+			padding: 8px 15px;
+			z-index: 0;
+			overflow: hidden;
+			border-radius: 7px;
+		}
+
+		.skills-tags li:first-child::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: 7px;
+			padding: 1px;
+			background: conic-gradient(from var(--shiny-angle),
+					var(--color-border-medium) 0%,
+					var(--color-accent) 10%,
+					color-mix(in srgb, var(--color-accent) 60%, #fff) 15%,
+					var(--color-accent) 20%,
+					var(--color-border-medium) 30%,
+					var(--color-border-medium) 100%);
+			-webkit-mask:
+				linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+			-webkit-mask-composite: xor;
+			mask:
+				linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+			mask-composite: exclude;
+			z-index: -1;
+			animation: shiny-border-spin 4s linear infinite;
+		}
+
+		.skills-tags li:first-child:hover {
+			background: var(--color-surface-raised);
+		}
+
 		/* ── Theme Toggle ── */
 		.theme-toggle {
 			background: none;
