@@ -1,6 +1,6 @@
 <h1>Sam Bruton ~ Frontend Developer </h1>
 
-<p>https://github.com/Sambuxc</p>
+<p>https://sambruton.com</p>
 
 <h2>I like to write blog articles about web development and the developer's mindset => <a href="https://www.thefrontendist.com" title="Frontend Web Developer">TheFrontendist.com</a></h2>
 
