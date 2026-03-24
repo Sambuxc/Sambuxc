@@ -9,7 +9,7 @@
 
 	<link rel="icon" href="./assets/favicon.ico" />
 	<style>
-		/* ── Design Tokens ── */
+		/* ── Design Tokens (Dark — default) ── */
 		:root {
 			--color-bg: #0b0c0f;
 			--color-surface: #16171b;
@@ -29,6 +29,32 @@
 			--color-text-disabled: #555;
 			--color-text-white: #fff;
 			--color-text-link: #ccc;
+
+			--color-accent: #7b8ef5;
+		}
+
+		/* ── Design Tokens (Light) ── */
+		[data-theme="light"] {
+			--color-bg: #f5f5f7;
+			--color-surface: #ffffff;
+			--color-surface-raised: #f0f0f2;
+
+			--color-border: #e0e0e3;
+			--color-border-subtle: #eaeaec;
+			--color-border-medium: #d5d5d9;
+			--color-border-strong: #c8c8cc;
+			--color-border-hover: #999;
+
+			--color-text-primary: #1d1d1f;
+			--color-text-heading: #1a1a1a;
+			--color-text-secondary: #48484a;
+			--color-text-muted: #636366;
+			--color-text-faint: #8e8e93;
+			--color-text-disabled: #aeaeb2;
+			--color-text-white: #1d1d1f;
+			--color-text-link: #48484a;
+
+			--color-accent: #5a6ae6;
 		}
 
 		/* ── Reset & Base ── */
@@ -276,6 +302,12 @@
 			color: var(--color-text-white);
 		}
 
+		.footer-actions {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+		}
+
 		/* ── Collapsible Experience ── */
 		.exp-fade-hint {
 			opacity: 0.45;
@@ -381,9 +413,33 @@
 
 		.skills-tags li::before {
 			content: "✓";
-			color: #7b8ef5;
+			color: var(--color-accent);
 			font-weight: 700;
 			font-size: 0.8rem;
+		}
+
+		/* ── Theme Toggle ── */
+		.theme-toggle {
+			background: none;
+			border: 1px solid var(--color-border-strong);
+			border-radius: 8px;
+			width: 36px;
+			height: 36px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			color: var(--color-text-faint);
+			font-size: 1.1rem;
+			transition: color 0.2s, border-color 0.2s, background 0.2s;
+			padding: 0;
+			line-height: 1;
+		}
+
+		.theme-toggle:hover {
+			color: var(--color-text-white);
+			border-color: var(--color-border-hover);
+			background: var(--color-surface);
 		}
 
 		/* ── Responsive ── */
@@ -591,12 +647,18 @@
 		<!-- Footer -->
 		<footer class="site-footer">
 			<p>&copy; 2026 Sam Bruton</p>
-			<a href="http://www.buymeacoffee.com/sambruton" target="_blank">☕ Buy me a coffee</a>
+			<div class="footer-actions">
+				<a href="http://www.buymeacoffee.com/sambruton" target="_blank">☕ Buy me a coffee</a>
+				<button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle colour scheme">
+					<span id="themeIcon">🌙</span>
+				</button>
+			</div>
 		</footer>
 
 	</div>
 
 	<script>
+		/* ── Experience toggle ── */
 		(function () {
 			const toggle = document.getElementById('expToggle');
 			const list = toggle.previousElementSibling;
@@ -605,6 +667,69 @@
 				const expanded = list.classList.toggle('expanded');
 				toggle.textContent = expanded ? 'View less' : 'View more';
 				toggle.setAttribute('aria-expanded', expanded);
+			});
+		})();
+
+		/* ── Theme: system detection + manual toggle ── */
+		(function () {
+			const root = document.documentElement;
+			const btn = document.getElementById('themeToggle');
+			const icon = document.getElementById('themeIcon');
+			const STORAGE_KEY = 'theme-preference';
+			const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
+
+			function applyTheme(theme) {
+				root.setAttribute('data-theme', theme);
+				icon.textContent = theme === 'light' ? '☀️' : '🌙';
+				btn.setAttribute('aria-label',
+					theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
+				);
+			}
+
+			function getSystemTheme() {
+				return window.matchMedia('(prefers-color-scheme: light)').matches
+					? 'light'
+					: 'dark';
+			}
+
+			function savePreference(theme) {
+				localStorage.setItem(STORAGE_KEY, JSON.stringify({
+					theme: theme,
+					expires: Date.now() + ONE_WEEK
+				}));
+			}
+
+			function loadPreference() {
+				try {
+					const raw = localStorage.getItem(STORAGE_KEY);
+					if (!raw) return null;
+					const pref = JSON.parse(raw);
+					if (Date.now() > pref.expires) {
+						localStorage.removeItem(STORAGE_KEY);
+						return null;
+					}
+					return pref.theme;
+				} catch (_) {
+					localStorage.removeItem(STORAGE_KEY);
+					return null;
+				}
+			}
+
+			/* Initialise: stored preference (if not expired) → system preference */
+			applyTheme(loadPreference() || getSystemTheme());
+
+			/* Manual toggle */
+			btn.addEventListener('click', function () {
+				const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+				applyTheme(next);
+				savePreference(next);
+			});
+
+			/* React to live system changes (only when no manual override stored) */
+			window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
+				if (!loadPreference()) {
+					applyTheme(e.matches ? 'light' : 'dark');
+				}
 			});
 		})();
 	</script>
