@@ -1,37 +1,40 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<meta name="description" content="Sam Bruton — Front-End Engineer Portfolio"/>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Sam Bruton — Front-End Engineer Portfolio" />
 	<title>Sam Bruton — Front-End Engineer</title>
 
-	<link rel="icon" href="./assets/favicon.ico"/>
+	<link rel="icon" href="./assets/favicon.ico" />
 	<style>
 		/* ── Design Tokens ── */
 		:root {
-			--color-bg:             #0b0c0f;
-			--color-surface:        #16171b;
+			--color-bg: #0b0c0f;
+			--color-surface: #16171b;
 			--color-surface-raised: #1a1b1f;
 
-			--color-border:         #1e1f24;
-			--color-border-subtle:  #1a1b1f;
-			--color-border-medium:  #222328;
-			--color-border-strong:  #2a2b30;
-			--color-border-hover:   #444;
+			--color-border: #1e1f24;
+			--color-border-subtle: #1a1b1f;
+			--color-border-medium: #222328;
+			--color-border-strong: #2a2b30;
+			--color-border-hover: #444;
 
-			--color-text-primary:   #e8e8ea;
-			--color-text-heading:   #e8e8e8;
+			--color-text-primary: #e8e8ea;
+			--color-text-heading: #e8e8e8;
 			--color-text-secondary: #b0b0b4;
-			--color-text-muted:     #aaa;
-			--color-text-faint:     #888;
-			--color-text-disabled:  #555;
-			--color-text-white:     #fff;
-			--color-text-link:      #ccc;
+			--color-text-muted: #aaa;
+			--color-text-faint: #888;
+			--color-text-disabled: #555;
+			--color-text-white: #fff;
+			--color-text-link: #ccc;
 		}
 
 		/* ── Reset & Base ── */
-		*, *::before, *::after {
+		*,
+		*::before,
+		*::after {
 			box-sizing: border-box;
 			margin: 0;
 			padding: 0;
@@ -309,168 +312,161 @@
 
 <body>
 
-<div class="container">
+	<div class="container">
 
-	<!-- Header -->
-	<header class="site-header">
-		<a href="/">
-			<img src="assets/sb-logo-transparent.svg" alt="Sam Bruton Front End Engineer Logo">
-		</a>
-		<nav class="header-links">
-			<a href="https://www.linkedin.com/in/sam-bruton/" target="_blank">LinkedIn</a>
-			<a href="https://github.com/Sambuxc" target="_blank">GitHub</a>
-			<a href="https://www.thefrontendist.com" target="_blank">Blog</a>
-		</nav>
-	</header>
+		<!-- Header -->
+		<header class="site-header">
+			<a href="/">
+				<img src="assets/sb-logo-transparent.svg" alt="Sam Bruton Front End Engineer Logo">
+			</a>
+			<nav class="header-links">
+				<a href="https://www.linkedin.com/in/sam-bruton/" target="_blank">LinkedIn</a>
+				<a href="https://github.com/Sambuxc" target="_blank">GitHub</a>
+				<a href="https://www.thefrontendist.com" target="_blank">Blog</a>
+			</nav>
+		</header>
 
-	<section>
-		<img
-			class="profile-photo"
-			aria-label="Profile photo placeholder"
-			src="assets/sam-bruton-frontend-engineer-profile-photo.jpg"
-			alt="Sam Bruton profile photo"
-		/>
+		<section>
+			<img class="profile-photo" aria-label="Sam Bruton profile photo"
+				src="assets/sam-bruton-frontend-engineer-profile-photo-greyscale.png" alt="Sam Bruton profile photo" />
 
-		<h1>Sam Bruton</h1>
-		<p class="subtitle">Front-End Engineer</p>
-		<small>Somewhere between Manchester & Liverpool</small>
+			<h1>Sam Bruton</h1>
+			<p class="subtitle">Front-End Engineer</p>
+			<small>Somewhere between Manchester & Liverpool</small>
 
-		<p>
-			Frontend developer with 7+ years of experience building reactive JavaScript web apps
-			and crafting Shopify &amp; WordPress theme customisations. I write about web development
-			and the developer's mindset at
-			<a href="https://www.thefrontendist.com" target="_blank"
-				 style="color:var(--color-text-link);text-decoration:underline;text-underline-offset:3px;">TheFrontendist.com</a>.
-		</p>
+			<p>
+				Frontend engineer with 7+ years of experience building reactive web applications.<br>
+				Delivering features, building reusable solutions, creating structure, and shipping quality code.<br>
 
-		<p>
-			I got into web development creating fansites for Habbo Hotel in the early 2000s — designing,
-			coding, and hosting sites with shoutcast radios so visitors could enjoy music while exploring
-			game guides and in-game furni prices.
-		</p>
+			<p>
+				I got into web development by creating fansites for an MMOCC game in the early 2000s — designing,
+				coding, and hosting sites with shoutcast radios so visitors could enjoy music while exploring
+				game guides and item prices.
+			</p>
 
-		<ul class="highlights">
-			<li>🌱 Learning to be a better writer &amp; communicator</li>
-			<li>💻 Open new ways of working</li>
-			<li>💬 Mentor — helping others getting started with web development</li>
-			<li>🏂 Snowboarding & Skating</li>
-		</ul>
-	</section>
+			<ul class="highlights">
+				<li>🌱 Learning to be a better writer &amp; communicator</li>
+				<li>💻 Open new ways of working</li>
+				<li>💬 Mentor — helping others getting started with web development</li>
+				<li>🏂 Snowboarding & Skating</li>
+			</ul>
+		</section>
 
-	<!-- What Matters -->
-	<section>
-		<div class="section-label">What Matters to Me</div>
-		<ul class="values-list">
-			<li>Delivering excellent user-experience</li>
-			<li>Collaborating with QE's to create solid end-to-end automation tests</li>
-			<li>Code reviewing socratically</li>
-			<li>Feature documentation</li>
-			<li>Guiding others to success</li>
-			<li>Learning &amp; growing</li>
-		</ul>
-	</section>
+		<!-- What Matters -->
+		<section>
+			<div class="section-label">What Matters to Me</div>
+			<ul class="values-list">
+				<li>Delivering excellent user-experience</li>
+				<li>Collaborating with QE's to create solid end-to-end automation tests</li>
+				<li>Code reviewing socratically</li>
+				<li>Feature documentation</li>
+				<li>Guiding others to success</li>
+				<li>Learning &amp; growing</li>
+			</ul>
+		</section>
 
-	<!-- Skills -->
-	<section>
-		<div class="section-label">Skills</div>
-		<ul class="values-list">
-			<li>Critically reviewing features and ensuring they are implemented correctly</li>
-			<li>Building responsive, accessible, and user-friendly web experiences for all</li>
-			<li>HTML, CSS, TypeScript, Vue.js, Node and Cloud infrastructure deployments</li>
-			<li>Writing clean, maintainable code that follows best practices and coding standards</li>
-			<li>Delivering technical solutions to high-quality products</li>
-			<li>Teaching ai to behave</li>
-		</ul>
-	</section>
+		<!-- Skills -->
+		<section>
+			<div class="section-label">Skills</div>
+			<ul class="values-list">
+				<li>Critically reviewing features and ensuring they are implemented correctly</li>
+				<li>Building responsive, accessible, and user-friendly web experiences for all</li>
+				<li>HTML, CSS, TypeScript, Vue.js, Node and Cloud infrastructure deployments</li>
+				<li>Writing clean, maintainable code that follows best practices and coding standards</li>
+				<li>Delivering technical solutions to high-quality products</li>
+				<li>Teaching ai to behave</li>
+			</ul>
+		</section>
 
-	<!-- To the Future -->
-	<section>
-		<div class="section-label">To the Future</div>
-		<ul class="values-list">
-			<li>Maintaining a backend Node.js API server integrated with client-side applications</li>
-			<li>Expanding knowledge of backend development and cloud infrastructure with CI/CD pipelines</li>
-			<li>Learning Swift and SwiftUI for iOS development</li>
-		</ul>
-	</section>
+		<!-- To the Future -->
+		<section>
+			<div class="section-label">To the Future</div>
+			<ul class="values-list">
+				<li>Maintaining a backend Node.js API server integrated with client-side applications</li>
+				<li>Expanding knowledge of backend development and cloud infrastructure with CI/CD pipelines</li>
+				<li>Learning Swift and SwiftUI for iOS development</li>
+			</ul>
+		</section>
 
-	<!-- Work Experience -->
-	<section>
-		<div class="section-label">Work Experience</div>
-		<ul class="experience-list">
-			<li>
-				<div class="exp-role">Front-End Engineer</div>
-				<div class="exp-company">CAVU · Full-time</div>
-				<div class="exp-meta">Jan 2024 – Present · Manchester Area · Remote</div>
-			</li>
-			<li>
-				<div class="exp-role">Web Development Mentor</div>
-				<div class="exp-company">OpenClassrooms · Part-time</div>
-				<div class="exp-meta">Apr 2022 – Jan 2024 · 1 yr 10 mos · Remote</div>
-			</li>
-			<li>
-				<div class="exp-role">Front-End Shopify Specialist</div>
-				<div class="exp-company">Squashed Pixel (Shopify Agency) · Full-time</div>
-				<div class="exp-meta">Aug 2023 – Nov 2023 · 4 mos · Remote</div>
-			</li>
-			<li>
-				<div class="exp-role">Front-End Developer (Shopify Theming &amp; Brand Development)</div>
-				<div class="exp-company">Underexposed · Full-time</div>
-				<div class="exp-meta">Jun 2022 – Jun 2023 · 1 yr 1 mo · Hybrid</div>
-			</li>
-			<li class="exp-fade-hint">
-				<div class="exp-role">Inspiring Mentor</div>
-				<div class="exp-company">Catch22 · Part-time</div>
-				<div class="exp-meta">Feb 2023 – Mar 2023 · 2 mos · Remote</div>
-			</li>
-			<li class="exp-hidden">
-				<div class="exp-role">WordPress Specialist</div>
-				<div class="exp-company">Blaze Media · Full-time</div>
-				<div class="exp-meta">Nov 2021 – Jun 2022 · 8 mos · Liverpool · On-site</div>
-			</li>
-			<li class="exp-hidden">
-				<div class="exp-role">Front-End WordPress Specialist</div>
-				<div class="exp-company">Pure Organic CBD &amp; Pure Organic Golf · Full-time</div>
-				<div class="exp-meta">Jan 2021 – May 2021 · 5 mos · Hybrid</div>
-			</li>
-			<li class="exp-hidden">
-				<div class="exp-role">Freelance Web Developer</div>
-				<div class="exp-company">Upwork · Full-time</div>
-				<div class="exp-meta">Jan 2017 – Jan 2020 · 3 yrs 1 mo · Remote</div>
-			</li>
-			<li class="exp-hidden">
-				<div class="exp-role">Website Designer &amp; Domain Host Management</div>
-				<div class="exp-company">BlueFireHost · Full-time</div>
-				<div class="exp-meta">Jan 2010 – Jun 2015 · 5 yrs 6 mos · Remote</div>
-			</li>
-			<li class="exp-hidden">
-				<div class="exp-role">Android App Developer Intern</div>
-				<div class="exp-company">Result Group Inc · Full-time</div>
-				<div class="exp-meta">Aug 2013 – Jul 2014 · 1 yr · On-site</div>
-			</li>
-		</ul>
-		<button class="exp-toggle" id="expToggle" aria-expanded="false">View more</button>
-	</section>
+		<!-- Work Experience -->
+		<section>
+			<div class="section-label">Work Experience</div>
+			<ul class="experience-list">
+				<li>
+					<div class="exp-role">Front-End Engineer</div>
+					<div class="exp-company">CAVU · Full-time</div>
+					<div class="exp-meta">Jan 2024 – Present · Manchester Area · Remote</div>
+				</li>
+				<li>
+					<div class="exp-role">Web Development Mentor</div>
+					<div class="exp-company">OpenClassrooms · Part-time</div>
+					<div class="exp-meta">Apr 2022 – Jan 2024 · 1 yr 10 mos · Remote</div>
+				</li>
+				<li>
+					<div class="exp-role">Front-End Shopify Specialist</div>
+					<div class="exp-company">Squashed Pixel (Shopify Agency) · Full-time</div>
+					<div class="exp-meta">Aug 2023 – Nov 2023 · 4 mos · Remote</div>
+				</li>
+				<li>
+					<div class="exp-role">Front-End Developer (Shopify Theming &amp; Brand Development)</div>
+					<div class="exp-company">Underexposed · Full-time</div>
+					<div class="exp-meta">Jun 2022 – Jun 2023 · 1 yr 1 mo · Hybrid</div>
+				</li>
+				<li class="exp-fade-hint">
+					<div class="exp-role">Inspiring Mentor</div>
+					<div class="exp-company">Catch22 · Part-time</div>
+					<div class="exp-meta">Feb 2023 – Mar 2023 · 2 mos · Remote</div>
+				</li>
+				<li class="exp-hidden">
+					<div class="exp-role">WordPress Specialist</div>
+					<div class="exp-company">Blaze Media · Full-time</div>
+					<div class="exp-meta">Nov 2021 – Jun 2022 · 8 mos · Liverpool · On-site</div>
+				</li>
+				<li class="exp-hidden">
+					<div class="exp-role">Front-End WordPress Specialist</div>
+					<div class="exp-company">Pure Organic CBD &amp; Pure Organic Golf · Full-time</div>
+					<div class="exp-meta">Jan 2021 – May 2021 · 5 mos · Hybrid</div>
+				</li>
+				<li class="exp-hidden">
+					<div class="exp-role">Freelance Web Developer</div>
+					<div class="exp-company">Upwork · Full-time</div>
+					<div class="exp-meta">Jan 2017 – Jan 2020 · 3 yrs 1 mo · Remote</div>
+				</li>
+				<li class="exp-hidden">
+					<div class="exp-role">Website Designer &amp; Domain Host Management</div>
+					<div class="exp-company">BlueFireHost · Full-time</div>
+					<div class="exp-meta">Jan 2010 – Jun 2015 · 5 yrs 6 mos · Remote</div>
+				</li>
+				<li class="exp-hidden">
+					<div class="exp-role">Android App Developer Intern</div>
+					<div class="exp-company">Result Group Inc · Full-time</div>
+					<div class="exp-meta">Aug 2013 – Jul 2014 · 1 yr · On-site</div>
+				</li>
+			</ul>
+			<button class="exp-toggle" id="expToggle" aria-expanded="false">View more</button>
+		</section>
 
-	<!-- Footer -->
-	<footer class="site-footer">
-		<p>&copy; 2026 Sam Bruton</p>
-		<a href="http://www.buymeacoffee.com/sambruton" target="_blank">☕ Buy me a coffee</a>
-	</footer>
+		<!-- Footer -->
+		<footer class="site-footer">
+			<p>&copy; 2026 Sam Bruton</p>
+			<a href="http://www.buymeacoffee.com/sambruton" target="_blank">☕ Buy me a coffee</a>
+		</footer>
 
-</div>
+	</div>
 
-<script>
-	(function () {
-		const toggle = document.getElementById('expToggle');
-		const list = toggle.previousElementSibling;
+	<script>
+		(function () {
+			const toggle = document.getElementById('expToggle');
+			const list = toggle.previousElementSibling;
 
-		toggle.addEventListener('click', function () {
-			const expanded = list.classList.toggle('expanded');
-			toggle.textContent = expanded ? 'View less' : 'View more';
-			toggle.setAttribute('aria-expanded', expanded);
-		});
-	})();
-</script>
+			toggle.addEventListener('click', function () {
+				const expanded = list.classList.toggle('expanded');
+				toggle.textContent = expanded ? 'View less' : 'View more';
+				toggle.setAttribute('aria-expanded', expanded);
+			});
+		})();
+	</script>
 
 </body>
+
 </html>
