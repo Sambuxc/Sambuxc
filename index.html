@@ -123,6 +123,12 @@
 			opacity: 0;
 		}
 
+		@media (hover: none) {
+			.profile-photo--greyscale {
+				display: none;
+			}
+		}
+
 		/* ── Section Styles ── */
 		section {
 			margin-bottom: 56px;
@@ -345,8 +351,8 @@
 
 		<section>
 			<div class="profile-photo-wrapper">
-				<img class="profile-photo profile-photo--colour"
-					src="assets/sam-bruton-frontend-engineer-profile-photo.png" alt="Sam Bruton profile photo" />
+				<img class="profile-photo profile-photo--colour" src="assets/sam-bruton-frontend-engineer-profile-photo.png"
+					alt="Sam Bruton profile photo" />
 				<img class="profile-photo profile-photo--greyscale" aria-label="Sam Bruton profile photo"
 					src="assets/sam-bruton-frontend-engineer-profile-photo-greyscale.png" alt="" />
 			</div>
