@@ -129,7 +129,7 @@
 	}
 
 	/* Initialise: stored preference (if not expired) → system preference */
-	applyTheme(loadPreference() || getSystemTheme());
+	applyTheme(loadPreference() || 'dark');
 
 	/* Manual toggle */
 	btn.addEventListener('click', function () {

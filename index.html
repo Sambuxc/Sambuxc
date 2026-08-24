@@ -7,6 +7,57 @@
 	<meta name="description" content="Sam Bruton — Front-End Engineer Portfolio" />
 	<title>Sam Bruton — Front-End Engineer</title>
 
+	<!-- Inline theme initializer: run before CSS to avoid a flash -->
+	<script>
+		(function () {
+			try {
+				const STORAGE_KEY = 'theme-preference'; // current format used by assets/main.js
+				const LEGACY_KEY = 'sb-theme';          // legacy key (compat)
+				const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
+
+				let theme = null;
+
+				// Try structured preference (JSON { theme, expires })
+				const raw = localStorage.getItem(STORAGE_KEY);
+				if (raw) {
+					try {
+						const parsed = JSON.parse(raw);
+						if (parsed && parsed.theme && (!parsed.expires || Date.now() <= parsed.expires)) {
+							theme = parsed.theme;
+						} else {
+							localStorage.removeItem(STORAGE_KEY);
+						}
+					} catch (e) {
+						localStorage.removeItem(STORAGE_KEY);
+					}
+				}
+
+				// Fallback to legacy plain string key
+				if (!theme) {
+					const legacy = localStorage.getItem(LEGACY_KEY);
+					if (legacy) theme = legacy;
+				}
+
+				// Default to dark on first visit and persist once (keeps behaviour consistent)
+				if (!theme) {
+					theme = 'dark';
+					try {
+						localStorage.setItem(STORAGE_KEY, JSON.stringify({
+							theme: theme,
+							expires: Date.now() + ONE_WEEK
+						}));
+					} catch (e) {
+						// ignore (private mode)
+					}
+				}
+
+				document.documentElement.setAttribute('data-theme', theme);
+			} catch (e) {
+				// fail silently — never block paint
+			}
+		})();
+	</script>
+
 	<link rel="icon" href="./assets/favicon.ico" />
 	<link rel="stylesheet" href="./assets/main.css" />
 </head>
