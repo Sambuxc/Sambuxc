@@ -8,524 +8,7 @@
 	<title>Sam Bruton — Front-End Engineer</title>
 
 	<link rel="icon" href="./assets/favicon.ico" />
-	<style>
-		/* ── Design Tokens (Dark — default) ── */
-		:root {
-			--color-bg: #0b0c0f;
-			--color-surface: #16171b;
-			--color-surface-raised: #1a1b1f;
-
-			--color-border: #1e1f24;
-			--color-border-subtle: #1a1b1f;
-			--color-border-medium: #222328;
-			--color-border-strong: #2a2b30;
-			--color-border-hover: #444;
-
-			--color-text-primary: #e8e8ea;
-			--color-text-heading: #e8e8e8;
-			--color-text-secondary: #b0b0b4;
-			--color-text-muted: #aaa;
-			--color-text-faint: #888;
-			--color-text-disabled: #555;
-			--color-text-white: #fff;
-			--color-text-link: #ccc;
-
-			--color-accent: #7b8ef5;
-		}
-
-		/* ── Design Tokens (Light) ── */
-		[data-theme="light"] {
-			--color-bg: #f5f5f7;
-			--color-surface: #ffffff;
-			--color-surface-raised: #f0f0f2;
-
-			--color-border: #e0e0e3;
-			--color-border-subtle: #eaeaec;
-			--color-border-medium: #d5d5d9;
-			--color-border-strong: #c8c8cc;
-			--color-border-hover: #999;
-
-			--color-text-primary: #1d1d1f;
-			--color-text-heading: #1a1a1a;
-			--color-text-secondary: #48484a;
-			--color-text-muted: #636366;
-			--color-text-faint: #8e8e93;
-			--color-text-disabled: #aeaeb2;
-			--color-text-white: #1d1d1f;
-			--color-text-link: #48484a;
-
-			--color-accent: #5a6ae6;
-		}
-
-		/* ── Reset & Base ── */
-		*,
-		*::before,
-		*::after {
-			box-sizing: border-box;
-			margin: 0;
-			padding: 0;
-		}
-
-		body {
-			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-			background: var(--color-bg);
-			color: var(--color-text-primary);
-			line-height: 1.7;
-			-webkit-font-smoothing: antialiased;
-		}
-
-		/* ── Layout ── */
-		.container {
-			max-width: 900px;
-			margin: 0 auto;
-			padding: 60px 28px 80px;
-		}
-
-		/* ── Header / Logo ── */
-		.site-header {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			margin-bottom: 64px;
-		}
-
-		.site-header a {
-			text-decoration: none;
-		}
-
-		.site-header img {
-			display: block;
-			width: 56px;
-			height: 56px;
-		}
-
-		.header-links {
-			display: flex;
-			gap: 20px;
-		}
-
-		.header-links a {
-			color: var(--color-text-faint);
-			font-size: 0.875rem;
-			text-decoration: none;
-			transition: color 0.2s;
-		}
-
-		.header-links a:hover {
-			color: var(--color-text-white);
-		}
-
-		/* ── Profile Photo ── */
-		.profile-photo-wrapper {
-			position: relative;
-			width: 140px;
-			height: 140px;
-			margin-bottom: 32px;
-		}
-
-		.profile-photo {
-			object-fit: cover;
-			width: 140px;
-			height: 140px;
-			border-radius: 50%;
-			background: var(--color-surface-raised);
-			border: 2px solid var(--color-border-strong);
-			display: block;
-			position: absolute;
-			top: 0;
-			left: 0;
-		}
-
-		.profile-photo--greyscale {
-			z-index: 2;
-			transition: opacity 0.4s ease;
-		}
-
-		.profile-photo--colour {
-			z-index: 1;
-		}
-
-		.profile-photo-wrapper:hover .profile-photo--greyscale {
-			opacity: 0;
-		}
-
-		@media (hover: none) {
-			.profile-photo--greyscale {
-				display: none;
-			}
-		}
-
-		/* ── Section Styles ── */
-		section {
-			margin-bottom: 56px;
-		}
-
-		.section-label {
-			font-size: 0.75rem;
-			font-weight: 600;
-			text-transform: uppercase;
-			letter-spacing: 0.08em;
-			color: var(--color-text-white);
-			margin-bottom: 20px;
-		}
-
-		h1 {
-			font-size: 2rem;
-			font-weight: 700;
-			color: var(--color-text-white);
-			line-height: 1.3;
-			margin-bottom: 8px;
-		}
-
-		.subtitle {
-			font-size: 1.125rem;
-			color: var(--color-text-faint);
-			margin-bottom: 24px;
-		}
-
-		p {
-			color: var(--color-text-secondary);
-			font-size: 1rem;
-			margin-bottom: 16px;
-		}
-
-		/* ── Highlights list ── */
-		.highlights {
-			list-style: none;
-			display: flex;
-			flex-wrap: wrap;
-			gap: 10px;
-			margin-top: 16px;
-		}
-
-		.highlights li {
-			background: var(--color-surface);
-			border: 1px solid var(--color-border-medium);
-			border-radius: 6px;
-			padding: 8px 14px;
-			font-size: 0.85rem;
-			color: var(--color-text-muted);
-		}
-
-		/* ── Experience Timeline ── */
-		.experience-list {
-			list-style: none;
-			border-left: 2px solid var(--color-border);
-			padding-left: 28px;
-		}
-
-		.experience-list li {
-			position: relative;
-			margin-bottom: 36px;
-		}
-
-		.experience-list li:last-child {
-			margin-bottom: 0;
-		}
-
-		.experience-list li::before {
-			content: "";
-			position: absolute;
-			left: -34px;
-			top: 6px;
-			width: 10px;
-			height: 10px;
-			border-radius: 50%;
-			background: var(--color-border-strong);
-			border: 2px solid var(--color-border-hover);
-		}
-
-		.exp-role {
-			font-size: 1rem;
-			font-weight: 600;
-			color: var(--color-text-heading);
-		}
-
-		.exp-company {
-			font-size: 0.9rem;
-			color: var(--color-text-faint);
-			margin-top: 2px;
-		}
-
-		.exp-meta {
-			font-size: 0.8rem;
-			color: var(--color-text-disabled);
-			margin-top: 4px;
-		}
-
-		/* ── Values / What Matters ── */
-		.values-list {
-			list-style: none;
-			columns: 2;
-			gap: 12px;
-		}
-
-		.values-list li {
-			display: flex;
-			padding: 4px 0;
-			font-size: 0.95rem;
-			color: var(--color-text-muted);
-		}
-
-		.values-list li::before {
-			content: "•";
-			margin-right: 10px;
-			color: var(--color-text-disabled);
-		}
-
-		/* ── Footer ── */
-		.site-footer {
-			margin-top: 40px;
-			padding-top: 32px;
-			border-top: 1px solid var(--color-border-subtle);
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			gap: 12px;
-		}
-
-		.site-footer p {
-			color: var(--color-text-disabled);
-			font-size: 0.8rem;
-			margin: 0;
-		}
-
-		.site-footer a {
-			color: var(--color-text-faint);
-			font-size: 0.8rem;
-			text-decoration: none;
-			transition: color 0.2s;
-		}
-
-		.site-footer a:hover {
-			color: var(--color-text-white);
-		}
-
-		.footer-actions {
-			display: flex;
-			align-items: center;
-			gap: 14px;
-		}
-
-		/* ── Collapsible Experience ── */
-		.exp-fade-hint {
-			opacity: 0.45;
-			transition: opacity 0.3s ease;
-		}
-
-		.experience-list.expanded .exp-fade-hint {
-			opacity: 1;
-		}
-
-		.exp-hidden {
-			display: none;
-		}
-
-		.experience-list.expanded .exp-hidden {
-			display: block;
-		}
-
-		.exp-toggle {
-			background: none;
-			border: 1px solid var(--color-border-strong);
-			border-radius: 6px;
-			color: var(--color-text-faint);
-			font-size: 0.85rem;
-			padding: 8px 18px;
-			margin-top: 20px;
-			cursor: pointer;
-			transition: color 0.2s, border-color 0.2s;
-		}
-
-		.exp-toggle:hover {
-			color: var(--color-text-white);
-			border-color: var(--color-border-hover);
-		}
-
-		/* ── Skills Grouped ── */
-		.skills-group {
-			margin-bottom: 28px;
-		}
-
-		.skills-group:last-child {
-			margin-bottom: 0;
-		}
-
-		.skills-group-label {
-			font-size: 0.8rem;
-			font-weight: 600;
-			color: var(--color-text-faint);
-			letter-spacing: 0.04em;
-			margin-bottom: 12px;
-			padding-bottom: 8px;
-			border-bottom: 1px solid var(--color-border);
-			cursor: pointer;
-			list-style: none;
-			display: flex;
-			align-items: center;
-			gap: 8px;
-			transition: color 0.2s;
-		}
-
-		.skills-group-label:hover {
-			color: var(--color-text-secondary);
-		}
-
-		.skills-group-label::-webkit-details-marker {
-			display: none;
-		}
-
-		.skills-group-label::before {
-			content: "▸";
-			font-size: 1.5rem;
-			transition: transform 0.2s ease;
-		}
-
-		.skills-group[open]>.skills-group-label::before {
-			transform: rotate(90deg);
-		}
-
-		.skills-tags {
-			list-style: none;
-			display: flex;
-			flex-wrap: wrap;
-			gap: 8px;
-		}
-
-		.skills-tags li {
-			background: var(--color-surface);
-			border: 1px solid var(--color-border-medium);
-			border-radius: 6px;
-			padding: 7px 14px;
-			font-size: 0.85rem;
-			color: var(--color-text-muted);
-			display: flex;
-			align-items: center;
-			gap: 6px;
-			transition: border-color 0.2s, background 0.2s;
-		}
-
-		.skills-tags li:hover {
-			border-color: var(--color-border-hover);
-			background: var(--color-surface-raised);
-		}
-
-		.skills-tags li::before {
-			content: "✓";
-			color: var(--color-accent);
-			font-weight: 700;
-			font-size: 0.8rem;
-		}
-
-		/* ── Shiny border – first skill in each group ── */
-		@keyframes shiny-border-spin {
-			0% {
-				--shiny-angle: 0deg;
-			}
-
-			100% {
-				--shiny-angle: 360deg;
-			}
-		}
-
-		@property --shiny-angle {
-			syntax: "<angle>";
-			initial-value: 0deg;
-			inherits: false;
-		}
-
-		.skills-tags li:first-child {
-			position: relative;
-			border: none;
-			padding: 8px 15px;
-			z-index: 0;
-			overflow: hidden;
-			border-radius: 7px;
-		}
-
-		.skills-tags li:first-child::after {
-			content: "";
-			position: absolute;
-			inset: 0;
-			border-radius: 7px;
-			padding: 1px;
-			background: conic-gradient(from var(--shiny-angle),
-					var(--color-border-medium) 0%,
-					var(--color-accent) 10%,
-					color-mix(in srgb, var(--color-accent) 60%, #fff) 15%,
-					var(--color-accent) 20%,
-					var(--color-border-medium) 30%,
-					var(--color-border-medium) 100%);
-			-webkit-mask:
-				linear-gradient(#fff 0 0) content-box,
-				linear-gradient(#fff 0 0);
-			-webkit-mask-composite: xor;
-			mask:
-				linear-gradient(#fff 0 0) content-box,
-				linear-gradient(#fff 0 0);
-			mask-composite: exclude;
-			z-index: -1;
-			animation: shiny-border-spin 4s linear infinite;
-		}
-
-		.skills-tags li:first-child:hover {
-			background: var(--color-surface-raised);
-		}
-
-		/* ── Theme Toggle ── */
-		.theme-toggle {
-			background: none;
-			border: 1px solid var(--color-border-strong);
-			border-radius: 8px;
-			width: 36px;
-			height: 36px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			cursor: pointer;
-			color: var(--color-text-faint);
-			font-size: 1.1rem;
-			transition: color 0.2s, border-color 0.2s, background 0.2s;
-			padding: 0;
-			line-height: 1;
-		}
-
-		.theme-toggle:hover {
-			color: var(--color-text-white);
-			border-color: var(--color-border-hover);
-			background: var(--color-surface);
-		}
-
-		/* ── Responsive ── */
-		@media (max-width: 600px) {
-			.container {
-				padding: 40px 20px 60px;
-			}
-
-			h1 {
-				font-size: 1.6rem;
-			}
-
-			.values-list {
-				columns: 1;
-			}
-
-			.skills-tags {
-				gap: 6px;
-			}
-
-			.skills-tags li {
-				font-size: 0.8rem;
-				padding: 6px 10px;
-			}
-
-			.site-header {
-				flex-wrap: wrap;
-				gap: 16px;
-			}
-		}
-	</style>
+	<link rel="stylesheet" href="./assets/main.css" />
 </head>
 
 <body>
@@ -533,7 +16,7 @@
 	<div class="container">
 
 		<!-- Header -->
-		<header class="site-header">
+		<header class="site-header reveal">
 			<a href="/">
 				<img src="assets/sb-logo-lightmode.svg" alt="Sam Bruton Front End Engineer Logo">
 			</a>
@@ -544,38 +27,66 @@
 			</nav>
 		</header>
 
-		<section>
+		<!-- Hero / Profile -->
+		<section class="hero-section reveal">
 			<div class="profile-photo-wrapper">
-				<img class="profile-photo profile-photo--colour" src="assets/sam-bruton-frontend-engineer-profile-photo.png"
-					alt="Sam Bruton profile photo" />
+				<img
+					class="profile-photo profile-photo--colour"
+					src="assets/sam-bruton-frontend-engineer-profile-photo.png"
+					alt="Profile of Sam Bruton FE Engineer"
+				/>
 				<img class="profile-photo profile-photo--greyscale" aria-label="Sam Bruton profile photo"
 					src="assets/sam-bruton-frontend-engineer-profile-photo-greyscale.png" alt="" />
 			</div>
 
+			<span class="hero-kicker">Front-End Engineer · 7+ Years</span>
 			<h1>Sam Bruton</h1>
-			<p class="subtitle">Front-End Engineer</p>
-			<small>Somewhere between Manchester & Liverpool</small>
+			<p class="subtitle">Building reactive web applications between Manchester & Liverpool</p>
 
 			<p>
 				Frontend engineer with 7+ years of experience building reactive web applications.<br>
-				Delivering features, building reusable solutions, creating structure, and shipping quality code.<br>
-
-			<p>
-				I got into web development by creating fansites for an MMOCC game in the early 2000s — designing,
-				coding, and hosting sites with shoutcast radios so visitors could enjoy music while exploring
-				game guides and item prices.
+				Delivering features, building reusable solutions, creating structure, and shipping quality code.
 			</p>
 
-			<ul class="highlights">
-				<li>🌱 Learning to be a better writer &amp; communicator</li>
-				<li>💻 Open new ways of working</li>
-				<li>💬 Mentor — helping others getting started with web development</li>
-				<li>🏂 Snowboarding & Skating</li>
+			<p>
+				My love of web development started in early 2000s by creating & hosting fansites for MMOCC games — back then I used SHOUTcast
+				for live DJ radios so visitors could enjoy music while exploring game guides and item prices.
+			</p>
+
+			<ul class="highlights reveal-stagger">
+				<li
+					class="reveal"
+					aria-label="Hosting technical demos of features I've built"
+					title="Hosting technical demos of features I've built"
+				>
+					🌱 Writer &amp; communicator
+				</li>
+				<li
+					class="reveal"
+					aria-label="Kanban, Sprint, Agile and Retrospective methodologies"
+					title="Kanban, Sprint, Agile and Retrospective methodologies"
+				>
+					💻 Open new ways of working
+				</li>
+				<li
+					class="reveal"
+					aria-label="helping others getting started with web development"
+					title="helping others getting started with web development"
+				>
+					💬 Mentoring
+				</li>
+				<li
+					class="reveal"
+					aria-label="Making life fun by Snowboarding and skating"
+					title="Making life fun by Snowboarding and skating"
+				>
+					🏂 Snowboarding & Skating
+				</li>
 			</ul>
 		</section>
 
 		<!-- What Matters -->
-		<section>
+		<section class="reveal">
 			<div class="section-label">What Matters to Me</div>
 			<ul class="values-list">
 				<li>Delivering excellent user-experience</li>
@@ -588,7 +99,7 @@
 		</section>
 
 		<!-- Skills -->
-		<section>
+		<section class="reveal">
 			<div class="section-label">Skills</div>
 
 			<details class="skills-group" open>
@@ -632,7 +143,7 @@
 		</section>
 
 		<!-- To the Future -->
-		<section>
+		<section class="reveal">
 			<div class="section-label">To the Future</div>
 			<ul class="values-list">
 				<li>Maintaining a backend Node.js API server integrated with client-side applications</li>
@@ -640,67 +151,201 @@
 				<li>Learning Swift and SwiftUI for iOS development</li>
 			</ul>
 		</section>
+	</div>
 
-		<!-- Work Experience -->
-		<section>
-			<div class="section-label">Work Experience</div>
-			<ul class="experience-list">
-				<li>
-					<div class="exp-role">Front-End Engineer</div>
-					<div class="exp-company">CAVU · Full-time</div>
-					<div class="exp-meta">Jan 2024 – Present · Manchester Area · Remote</div>
-				</li>
-				<li>
-					<div class="exp-role">Web Development Mentor</div>
-					<div class="exp-company">OpenClassrooms · Part-time</div>
-					<div class="exp-meta">Apr 2022 – Jan 2024 · 1 yr 10 mos · Remote</div>
-				</li>
-				<li>
-					<div class="exp-role">Front-End Shopify Specialist</div>
-					<div class="exp-company">Squashed Pixel (Shopify Agency) · Full-time</div>
-					<div class="exp-meta">Aug 2023 – Nov 2023 · 4 mos · Remote</div>
-				</li>
-				<li>
-					<div class="exp-role">Front-End Developer (Shopify Theming &amp; Brand Development)</div>
-					<div class="exp-company">Underexposed · Full-time</div>
-					<div class="exp-meta">Jun 2022 – Jun 2023 · 1 yr 1 mo · Hybrid</div>
-				</li>
-				<li class="exp-fade-hint">
-					<div class="exp-role">Inspiring Mentor</div>
-					<div class="exp-company">Catch22 · Part-time</div>
-					<div class="exp-meta">Feb 2023 – Mar 2023 · 2 mos · Remote</div>
-				</li>
-				<li class="exp-hidden">
-					<div class="exp-role">WordPress Specialist</div>
-					<div class="exp-company">Blaze Media · Full-time</div>
-					<div class="exp-meta">Nov 2021 – Jun 2022 · 8 mos · Liverpool · On-site</div>
-				</li>
-				<li class="exp-hidden">
-					<div class="exp-role">Front-End WordPress Specialist</div>
-					<div class="exp-company">Pure Organic CBD &amp; Pure Organic Golf · Full-time</div>
-					<div class="exp-meta">Jan 2021 – May 2021 · 5 mos · Hybrid</div>
-				</li>
-				<li class="exp-hidden">
-					<div class="exp-role">Freelance Web Developer</div>
-					<div class="exp-company">Upwork · Full-time</div>
-					<div class="exp-meta">Jan 2017 – Jan 2020 · 3 yrs 1 mo · Remote</div>
-				</li>
-				<li class="exp-hidden">
-					<div class="exp-role">Website Designer &amp; Domain Host Management</div>
-					<div class="exp-company">BlueFireHost · Full-time</div>
-					<div class="exp-meta">Jan 2010 – Jun 2015 · 5 yrs 6 mos · Remote</div>
-				</li>
-				<li class="exp-hidden">
-					<div class="exp-role">Android App Developer Intern</div>
-					<div class="exp-company">Result Group Inc · Full-time</div>
-					<div class="exp-meta">Aug 2013 – Jul 2014 · 1 yr · On-site</div>
-				</li>
-			</ul>
-			<button class="exp-toggle" id="expToggle" aria-expanded="false">View more</button>
-		</section>
+	<!-- ═══════════════════════════════════════════════
+		     Horizontal Career Timeline
+		     ═══════════════════════════════════════════════ -->
+	<section class="timeline-section reveal">
+		<div class="hero-content">
+			<h1>
+				<span class="hero-sm">Sam Bruton</span>
+				<span class="hero-lg">Frontend Engineer</span>
+			</h1>
+			<p class="hero-sub">Building scalable JavaScript applications in the cloud with security & accessibility in mind.</p>
+			<p class="hero-dates">2010 — 2026</p>
+			<div class="scroll-cue" aria-hidden="true">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M5 12h14M12 5l7 7-7 7"></path>
+				</svg>
+				<span>Scroll right</span>
+			</div>
+		</div>
+
+		<div class="timeline-track" id="timelineTrack">
+
+			<!-- Era I — Foundations -->
+			<div class="era-divider">
+				<span class="era-numeral">I</span>
+				<span class="era-title">Foundations</span>
+			</div>
+
+			<article class="timeline-card reveal" style="--card-accent: var(--color-accent-freelance)">
+				<div class="card-date">2010 – 2015</div>
+				<h3>Website Designer & Domain Host</h3>
+				<p class="card-company">BlueFireHost · Full-time · Remote</p>
+				<p class="card-desc">Designed and managed websites and domain hosting infrastructure for 5+ years, building
+					the foundation for a career in web development.</p>
+				<div class="card-pills">
+					<span class="card-pill">🌱 First Role</span>
+					<span class="card-pill">5 yrs 6 mos</span>
+				</div>
+			</article>
+
+			<article class="timeline-card reveal" style="--card-accent: var(product)">
+				<div class="card-date">2011 – 2015</div>
+				<h3>BSc Computing</h3>
+				<p class="card-company">Leeds Beckett University</p>
+				<p class="card-desc">Designed and managed websites and domain hosting infrastructure for 5+ years, building
+					the foundation for a career in web development.</p>
+				<div class="card-pills">
+					<span class="card-pill">🌱 First Role</span>
+					<span class="card-pill">5 yrs 6 mos</span>
+				</div>
+			</article>
+
+			<article class="timeline-card reveal" style="--card-accent: var(--color-accent-intern)">
+				<div class="card-date">2013 – 2014</div>
+				<h3>Android App Developer Intern</h3>
+				<p class="card-company">Result Group Inc · Full-time · On-site</p>
+				<p class="card-desc">Year-long internship developing Android applications, gaining cross-platform experience
+					and professional development fundamentals.</p>
+				<div class="card-pills">
+					<span class="card-pill">📱 Mobile</span>
+					<span class="card-pill">1 yr</span>
+				</div>
+			</article>
+
+			<!-- Era II — Growth -->
+			<div class="era-divider">
+				<span class="era-numeral">II</span>
+				<span class="era-title">Growth</span>
+			</div>
+
+			<article class="timeline-card reveal" style="--card-accent: var(--color-accent-freelance)">
+				<div class="card-date">2017 – 2020</div>
+				<h3>Freelance Web Developer</h3>
+				<p class="card-company">Upwork · Full-time · Remote</p>
+				<p class="card-desc">3+ years freelancing across diverse client projects, honing problem-solving skills and
+					delivering production-ready solutions independently.</p>
+				<div class="card-pills">
+					<span class="card-pill">🚀 Independent</span>
+					<span class="card-pill">3 yrs 1 mo</span>
+				</div>
+			</article>
+
+			<article class="timeline-card reveal" style="--card-accent: var(--color-accent-freelance)">
+				<div class="card-date">2021</div>
+				<h3>Front-End WordPress Specialist</h3>
+				<p class="card-company">Pure Organic CBD & Golf · Full-time · Hybrid</p>
+				<p class="card-desc">Built and maintained WordPress front-ends for e-commerce brands, focusing on performance
+					and user experience.</p>
+				<div class="card-pills">
+					<span class="card-pill">🛒 E-commerce</span>
+					<span class="card-pill">5 mos</span>
+				</div>
+			</article>
+
+			<!-- Era III — Specialisation -->
+			<div class="era-divider">
+				<span class="era-numeral">III</span>
+				<span class="era-title">Specialisation</span>
+			</div>
+
+			<article class="timeline-card reveal" style="--card-accent: var(--color-accent-agency)">
+				<div class="card-date">2021 – 2022</div>
+				<h3>WordPress Specialist</h3>
+				<p class="card-company">Blaze Media · Full-time · Liverpool · On-site</p>
+				<p class="card-desc">Agency environment delivering WordPress solutions for diverse clients, sharpening
+					deadline-driven development and client communication.</p>
+				<div class="card-pills">
+					<span class="card-pill">🏢 Agency</span>
+					<span class="card-pill">8 mos</span>
+				</div>
+			</article>
+
+			<article class="timeline-card reveal" style="--card-accent: var(--color-accent-agency)">
+				<div class="card-date">2022 – 2023</div>
+				<h3>Front-End Developer</h3>
+				<p class="card-company">Underexposed · Full-time · Hybrid</p>
+				<p class="card-desc">Shopify theming and brand development. Built custom storefronts with a focus on unique
+					brand identity and conversion-optimised user flows.</p>
+				<div class="card-pills">
+					<span class="card-pill">🎨 Shopify</span>
+					<span class="card-pill">1 yr 1 mo</span>
+				</div>
+			</article>
+
+			<article class="timeline-card reveal" style="--card-accent: var(--color-accent-mentor)">
+				<div class="card-date">2022 – 2024</div>
+				<h3>Web Development Mentor</h3>
+				<p class="card-company">OpenClassrooms · Part-time · Remote</p>
+				<p class="card-desc">Guided aspiring developers through structured curricula, conducting code reviews and
+					helping students build portfolio-ready projects.</p>
+				<div class="card-pills">
+					<span class="card-pill">🎓 Mentor</span>
+					<span class="card-pill">1 yr 10 mos</span>
+				</div>
+			</article>
+
+			<article class="timeline-card reveal" style="--card-accent: var(--color-accent-mentor)">
+				<div class="card-date">2023</div>
+				<h3>Inspiring Mentor</h3>
+				<p class="card-company">Catch22 · Part-time · Remote</p>
+				<p class="card-desc">Short-term mentoring programme helping underrepresented groups start their journey in
+					tech and web development.</p>
+				<div class="card-pills">
+					<span class="card-pill">💬 Community</span>
+					<span class="card-pill">2 mos</span>
+				</div>
+			</article>
+
+			<article class="timeline-card reveal" style="--card-accent: var(--color-accent-agency)">
+				<div class="card-date">2023</div>
+				<h3>Front-End Shopify Specialist</h3>
+				<p class="card-company">Squashed Pixel (Shopify Agency) · Full-time · Remote</p>
+				<p class="card-desc">Delivered pixel-perfect Shopify themes and custom sections for agency clients, working to
+					tight briefs and sprint cycles.</p>
+				<div class="card-pills">
+					<span class="card-pill">🏢 Agency</span>
+					<span class="card-pill">4 mos</span>
+				</div>
+			</article>
+
+			<!-- Era IV — Current -->
+			<div class="era-divider">
+				<span class="era-numeral">IV</span>
+				<span class="era-title">Current</span>
+			</div>
+
+			<article class="timeline-card reveal" style="--card-accent: var(--color-accent-product)">
+				<div class="card-date">2024 – Present</div>
+				<h3>Front-End Engineer</h3>
+				<p class="card-company">CAVU · Full-time · Manchester Area · Remote</p>
+				<p class="card-desc">Building reactive web applications for a travel-tech company. Delivering features,
+					crafting reusable component systems, and shipping quality code in an agile product team.</p>
+				<div class="card-pills">
+					<span class="card-pill">⭐ Current</span>
+					<span class="card-pill">🚀 Product</span>
+					<span class="card-pill">Vue.js</span>
+				</div>
+			</article>
+
+		</div>
+
+		<!-- Scroll Progress Bar -->
+		<div class="timeline-progress">
+			<div class="timeline-progress-fill" id="timelineProgressFill"></div>
+		</div>
+		<div class="timeline-scroll-hint" id="scrollHint">
+			← Scroll to explore →
+		</div>
+	</section>
+
+	<div class="container">
 
 		<!-- Footer -->
-		<footer class="site-footer">
+		<footer class="site-footer reveal">
 			<p>&copy; 2026 Sam Bruton</p>
 			<div class="footer-actions">
 				<a href="http://www.buymeacoffee.com/sambruton" target="_blank">☕ Buy me a coffee</a>
@@ -712,82 +357,7 @@
 
 	</div>
 
-	<script>
-		/* ── Experience toggle ── */
-		(function () {
-			const toggle = document.getElementById('expToggle');
-			const list = toggle.previousElementSibling;
-
-			toggle.addEventListener('click', function () {
-				const expanded = list.classList.toggle('expanded');
-				toggle.textContent = expanded ? 'View less' : 'View more';
-				toggle.setAttribute('aria-expanded', expanded);
-			});
-		})();
-
-		/* ── Theme: system detection + manual toggle ── */
-		(function () {
-			const root = document.documentElement;
-			const btn = document.getElementById('themeToggle');
-			const icon = document.getElementById('themeIcon');
-			const STORAGE_KEY = 'theme-preference';
-			const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
-
-			function applyTheme(theme) {
-				root.setAttribute('data-theme', theme);
-				icon.textContent = theme === 'light' ? '☀️' : '🌙';
-				btn.setAttribute('aria-label',
-					theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
-				);
-			}
-
-			function getSystemTheme() {
-				return window.matchMedia('(prefers-color-scheme: light)').matches
-					? 'light'
-					: 'dark';
-			}
-
-			function savePreference(theme) {
-				localStorage.setItem(STORAGE_KEY, JSON.stringify({
-					theme: theme,
-					expires: Date.now() + ONE_WEEK
-				}));
-			}
-
-			function loadPreference() {
-				try {
-					const raw = localStorage.getItem(STORAGE_KEY);
-					if (!raw) return null;
-					const pref = JSON.parse(raw);
-					if (Date.now() > pref.expires) {
-						localStorage.removeItem(STORAGE_KEY);
-						return null;
-					}
-					return pref.theme;
-				} catch (_) {
-					localStorage.removeItem(STORAGE_KEY);
-					return null;
-				}
-			}
-
-			/* Initialise: stored preference (if not expired) → system preference */
-			applyTheme(loadPreference() || getSystemTheme());
-
-			/* Manual toggle */
-			btn.addEventListener('click', function () {
-				const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-				applyTheme(next);
-				savePreference(next);
-			});
-
-			/* React to live system changes (only when no manual override stored) */
-			window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
-				if (!loadPreference()) {
-					applyTheme(e.matches ? 'light' : 'dark');
-				}
-			});
-		})();
-	</script>
+	<script src="./assets/main.js" defer></script>
 
 </body>
 
