@@ -2,6 +2,8 @@
    Scroll-triggered Reveal Animations
    ═══════════════════════════════════════════════ */
 (function () {
+	if (!('IntersectionObserver' in window)) return;
+	document.documentElement.classList.add('reveal-ready');
 	const observer = new IntersectionObserver(
 		(entries) => {
 			entries.forEach((entry) => {
@@ -32,6 +34,9 @@
 		/* Only hijack when hovering the timeline and it's horizontally scrollable */
 		if (track.scrollWidth <= track.clientWidth) return;
 
+		if (e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+		const max = track.scrollWidth - track.clientWidth;
+		if ((e.deltaY < 0 && track.scrollLeft <= 0) || (e.deltaY > 0 && track.scrollLeft >= max - 1)) return;
 		e.preventDefault();
 
 		/* Multiplier for snappy feel — trackpad sends small deltas, mouse wheel sends large ones */
@@ -60,6 +65,7 @@
 	updateProgress();
 
 	/* Horizontal IntersectionObserver for timeline cards */
+	if (!('IntersectionObserver' in window)) return;
 	const timelineObserver = new IntersectionObserver(
 		(entries) => {
 			entries.forEach((entry) => {
@@ -77,71 +83,5 @@
 
 	track.querySelectorAll('.timeline-card.reveal, .era-divider').forEach((el) => {
 		timelineObserver.observe(el);
-	});
-})();
-
-
-/* ═══════════════════════════════════════════════
-   Theme: system detection + manual toggle
-   ═══════════════════════════════════════════════ */
-(function () {
-	const root = document.documentElement;
-	const btn = document.getElementById('themeToggle');
-	const icon = document.getElementById('themeIcon');
-	const STORAGE_KEY = 'theme-preference';
-	const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
-
-	function applyTheme(theme) {
-		root.setAttribute('data-theme', theme);
-		icon.textContent = theme === 'light' ? '☀️' : '🌙';
-		btn.setAttribute('aria-label',
-			theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
-		);
-	}
-
-	function getSystemTheme() {
-		return window.matchMedia('(prefers-color-scheme: light)').matches
-			? 'light'
-			: 'dark';
-	}
-
-	function savePreference(theme) {
-		localStorage.setItem(STORAGE_KEY, JSON.stringify({
-			theme: theme,
-			expires: Date.now() + ONE_WEEK
-		}));
-	}
-
-	function loadPreference() {
-		try {
-			const raw = localStorage.getItem(STORAGE_KEY);
-			if (!raw) return null;
-			const pref = JSON.parse(raw);
-			if (Date.now() > pref.expires) {
-				localStorage.removeItem(STORAGE_KEY);
-				return null;
-			}
-			return pref.theme;
-		} catch (_) {
-			localStorage.removeItem(STORAGE_KEY);
-			return null;
-		}
-	}
-
-	/* Initialise: stored preference (if not expired) → system preference */
-	applyTheme(loadPreference() || 'dark');
-
-	/* Manual toggle */
-	btn.addEventListener('click', function () {
-		const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-		applyTheme(next);
-		savePreference(next);
-	});
-
-	/* React to live system changes (only when no manual override stored) */
-	window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
-		if (!loadPreference()) {
-			applyTheme(e.matches ? 'light' : 'dark');
-		}
 	});
 })();
