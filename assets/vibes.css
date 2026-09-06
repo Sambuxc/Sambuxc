@@ -1,0 +1,668 @@
+/* ═══════════════════════════════════════════════════════════
+   Sam Bruton — "Vibes" theme framework
+   ───────────────────────────────────────────────────────────
+   This layers on TOP of assets/main.css and the existing
+   [data-theme="dark|light"] system — it does not replace it.
+
+   How it works:
+   - <html data-vibe="snowboard|paragliding|tech|guitar"> switches
+     the palette, display font, background wash, hover fx and
+     parallax particles for that category.
+   - No data-vibe attribute (or data-vibe="none") = the original
+     default look, untouched.
+   - Every vibe only overrides the existing --color-* / --font-*
+     custom properties from main.css, so ALL existing components
+     (cards, pills, skills tags, timeline, etc.) automatically
+     re-skin themselves — no per-component duplication needed.
+
+   To add a new vibe: copy one of the "VIBE:" blocks below, give
+   it a new [data-vibe="..."] selector, pick colours/fonts, then
+   add a matching entry to the VIBES array at the top of vibes.js
+   and one CONFIG entry in the Parallax module for particles.
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+/* ─────────────────────────────────────────────
+   Shared transition so switching vibes feels like a
+   cross-fade rather than a hard cut.
+
+   NOTE: kept to elements with NO existing `transition`
+   declaration in main.css (body, card-pill, hero-lg,
+   the vibe menu itself). Cards / list items / .reveal
+   already own a `transition` shorthand there for their
+   hover-lift and scroll-reveal motion — redeclaring it
+   here at equal specificity would silently replace
+   (not merge with) theirs, since vibes.css loads after
+   main.css. Their colour swap still happens, just as a
+   hard cut rather than a cross-fade — a fine trade-off.
+   ───────────────────────────────────────────── */
+body,
+.card-pill,
+.hero-lg,
+.vibe-menu-toggle,
+.vibe-option {
+	transition:
+		background var(--transition-medium),
+		background-position var(--transition-slow),
+		border-color var(--transition-medium),
+		color var(--transition-medium),
+		box-shadow var(--transition-medium);
+}
+
+
+/* ═══════════════════════════════════════════════
+   VIBE: Snowboard / Skateboarding — "Shred"
+   Icy blues + concrete grey + a hit of grip-tape orange
+   ═══════════════════════════════════════════════ */
+[data-vibe="snowboard"] {
+	--color-accent: #3ad6ff;
+	--color-accent-product: #7dd3fc;
+	--color-accent-agency: #38bdf8;
+	--color-accent-mentor: #ff5b35;
+	--color-accent-freelance: #22d3ee;
+	--color-accent-intern: #f472b6;
+	--color-accent-default: #3ad6ff;
+
+	--font-display: 'Archivo Black', var(--font-sans);
+	--font-serif: 'Archivo Black', var(--font-sans);
+
+	--vibe-particle-color: #eaf6ff;
+	--vibe-particle-color-2: #ff5b35;
+}
+
+[data-vibe="snowboard"] body {
+	background:
+		radial-gradient(1100px 700px at 8% -5%, rgba(58, 214, 255, .12), transparent 60%),
+		radial-gradient(800px 600px at 105% 30%, rgba(255, 91, 53, .07), transparent 55%),
+		radial-gradient(900px 700px at 50% 100%, rgba(34, 211, 238, .05), transparent 60%),
+		var(--color-bg);
+	background-size: 200% 200%, 200% 200%, 200% 200%, 100% 100%;
+}
+
+[data-vibe="snowboard"] .hero-lg {
+	background: linear-gradient(120deg, var(--color-text-primary) 0%, var(--color-accent) 45%, var(--color-accent-mentor) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	letter-spacing: -0.01em;
+}
+
+/* Deck-pop hover: a little kick + skew, like popping an ollie */
+@media (prefers-reduced-motion: no-preference) {
+	[data-vibe="snowboard"] .timeline-card {
+		transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), box-shadow var(--transition-medium), border-color var(--transition-fast);
+	}
+
+	[data-vibe="snowboard"] .timeline-card:nth-child(odd):hover {
+		transform: translateY(-34px) rotate(-1.75deg);
+	}
+
+	[data-vibe="snowboard"] .timeline-card:nth-child(even):hover {
+		transform: translateY(20px) rotate(1.75deg);
+	}
+
+	[data-vibe="snowboard"] .skills-tags li:hover,
+	[data-vibe="snowboard"] .highlights li:hover {
+		transform: translateY(-3px) skewX(-6deg);
+		border-style: dashed;
+	}
+}
+
+
+/* ═══════════════════════════════════════════════
+   VIBE: Paragliding — "Soar"
+   Sky blue, sunset coral, cloud white — light & airy
+   ═══════════════════════════════════════════════ */
+[data-vibe="paragliding"] {
+	--color-accent: #4fb6e6;
+	--color-accent-product: #6bc7ee;
+	--color-accent-agency: #38a1d9;
+	--color-accent-mentor: #ffb066;
+	--color-accent-freelance: #6fd3c7;
+	--color-accent-intern: #ff9466;
+	--color-accent-default: #4fb6e6;
+
+	--font-display: 'Cormorant Garamond', var(--font-serif);
+	--font-serif: 'Cormorant Garamond', Georgia, serif;
+
+	--vibe-particle-color: #ffffff;
+	--vibe-particle-color-2: #ffb066;
+}
+
+[data-vibe="paragliding"] body {
+	background:
+		radial-gradient(1200px 800px at 20% -10%, rgba(79, 182, 230, .14), transparent 60%),
+		radial-gradient(900px 700px at 100% 20%, rgba(255, 176, 102, .08), transparent 55%),
+		radial-gradient(1000px 800px at 50% 105%, rgba(111, 211, 199, .06), transparent 60%),
+		var(--color-bg);
+	background-size: 220% 220%, 220% 220%, 220% 220%, 100% 100%;
+	animation-duration: 55s;
+}
+
+[data-vibe="paragliding"] .hero-lg {
+	background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-accent) 50%, var(--color-accent-mentor) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: 600;
+}
+
+/* Lift-on-thermal hover: slow, floaty, banking turn */
+@media (prefers-reduced-motion: no-preference) {
+	[data-vibe="paragliding"] .timeline-card {
+		transition: transform .8s cubic-bezier(.16, 1, .3, 1), box-shadow .6s ease, border-color var(--transition-fast);
+	}
+
+	[data-vibe="paragliding"] .timeline-card:nth-child(odd):hover {
+		transform: translateY(-42px) rotate(-1.2deg);
+	}
+
+	[data-vibe="paragliding"] .timeline-card:nth-child(even):hover {
+		transform: translateY(26px) rotate(1.2deg);
+	}
+
+	[data-vibe="paragliding"] .skills-tags li:hover,
+	[data-vibe="paragliding"] .highlights li:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 10px 24px rgba(79, 182, 230, .18);
+	}
+}
+
+
+/* ═══════════════════════════════════════════════
+   VIBE: Tech — "Circuit"
+   Near-black, neon cyan/magenta, monospace headings
+   ═══════════════════════════════════════════════ */
+[data-vibe="tech"] {
+	--color-accent: #00e5ff;
+	--color-accent-product: #7c5cff;
+	--color-accent-agency: #2dd4bf;
+	--color-accent-mentor: #ff2fd0;
+	--color-accent-freelance: #39ff88;
+	--color-accent-intern: #ff2fd0;
+	--color-accent-default: #00e5ff;
+
+	--font-display: var(--font-mono);
+	--font-serif: var(--font-mono);
+
+	--vibe-particle-color: #00e5ff;
+	--vibe-particle-color-2: #ff2fd0;
+}
+
+[data-vibe="tech"] body {
+	background:
+		radial-gradient(1100px 700px at 12% 0%, rgba(0, 229, 255, .10), transparent 60%),
+		radial-gradient(800px 600px at 100% 50%, rgba(124, 92, 255, .09), transparent 55%),
+		radial-gradient(900px 700px at 50% 100%, rgba(255, 47, 208, .05), transparent 60%),
+		repeating-linear-gradient(0deg, rgba(255, 255, 255, .025) 0px, transparent 1px, transparent 28px),
+		repeating-linear-gradient(90deg, rgba(255, 255, 255, .025) 0px, transparent 1px, transparent 28px),
+		var(--color-bg);
+	background-size: 200% 200%, 200% 200%, 200% 200%, 28px 28px, 28px 28px, 100% 100%;
+}
+
+[data-vibe="tech"] .hero-lg {
+	background: linear-gradient(120deg, var(--color-accent) 0%, var(--color-text-primary) 40%, var(--color-accent-product) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	letter-spacing: -0.01em;
+}
+
+[data-vibe="tech"] .timeline-card::before {
+	box-shadow: 0 0 12px var(--card-accent, var(--color-accent));
+}
+
+/* Glitch-flicker hover + neon glow */
+@keyframes vibe-glitch {
+	0% {
+		clip-path: inset(0 0 0 0);
+	}
+
+	20% {
+		transform: translate(-1px, 1px);
+		clip-path: inset(10% 0 60% 0);
+	}
+
+	40% {
+		transform: translate(1px, -1px);
+		clip-path: inset(60% 0 5% 0);
+	}
+
+	60% {
+		transform: translate(-1px, 0);
+		clip-path: inset(30% 0 30% 0);
+	}
+
+	100% {
+		transform: translate(0, 0);
+		clip-path: inset(0 0 0 0);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	[data-vibe="tech"] .timeline-card:hover {
+		box-shadow: 0 0 0 1px var(--color-accent), var(--card-shadow-hover);
+	}
+
+	[data-vibe="tech"] .timeline-card:hover h3 {
+		animation: vibe-glitch .3s steps(2, end);
+	}
+
+	[data-vibe="tech"] .skills-tags li:hover,
+	[data-vibe="tech"] .highlights li:hover {
+		box-shadow: 0 0 0 1px var(--color-accent);
+		text-shadow: 0 0 8px var(--color-accent);
+	}
+}
+
+
+/* ═══════════════════════════════════════════════
+   VIBE: Music / Guitar — "Riff"
+   Warm amber wood-tones + stage-light red, vintage poster type
+   ═══════════════════════════════════════════════ */
+[data-vibe="guitar"] {
+	--color-accent: #e8a33d;
+	--color-accent-product: #e6435c;
+	--color-accent-agency: #d97706;
+	--color-accent-mentor: #f2c14e;
+	--color-accent-freelance: #c2884a;
+	--color-accent-intern: #e6435c;
+	--color-accent-default: #e8a33d;
+
+	--font-display: 'Playfair Display', var(--font-serif);
+	--font-serif: 'Playfair Display', Georgia, serif;
+
+	--vibe-particle-color: #f2c14e;
+	--vibe-particle-color-2: #e6435c;
+}
+
+[data-vibe="guitar"] body {
+	background:
+		radial-gradient(1000px 700px at 15% 0%, rgba(232, 163, 61, .12), transparent 60%),
+		radial-gradient(800px 600px at 100% 40%, rgba(230, 67, 92, .08), transparent 55%),
+		radial-gradient(900px 700px at 50% 100%, rgba(194, 136, 74, .06), transparent 60%),
+		var(--color-bg);
+	background-size: 200% 200%, 200% 200%, 200% 200%, 100% 100%;
+}
+
+[data-vibe="guitar"] .hero-lg {
+	background: linear-gradient(120deg, var(--color-text-primary) 0%, var(--color-accent) 50%, var(--color-accent-product) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-style: italic;
+}
+
+/* String-pluck wobble hover */
+@keyframes vibe-string-wobble-odd {
+
+	0%,
+	100% {
+		transform: translateY(-34px) rotate(0deg);
+	}
+
+	20% {
+		transform: translateY(-34px) rotate(-1.4deg);
+	}
+
+	50% {
+		transform: translateY(-34px) rotate(1deg);
+	}
+
+	80% {
+		transform: translateY(-34px) rotate(-0.5deg);
+	}
+}
+
+@keyframes vibe-string-wobble-even {
+
+	0%,
+	100% {
+		transform: translateY(20px) rotate(0deg);
+	}
+
+	20% {
+		transform: translateY(20px) rotate(1.4deg);
+	}
+
+	50% {
+		transform: translateY(20px) rotate(-1deg);
+	}
+
+	80% {
+		transform: translateY(20px) rotate(0.5deg);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	[data-vibe="guitar"] .timeline-card:nth-child(odd):hover {
+		animation: vibe-string-wobble-odd .5s ease-out;
+	}
+
+	[data-vibe="guitar"] .timeline-card:nth-child(even):hover {
+		animation: vibe-string-wobble-even .5s ease-out;
+	}
+
+	[data-vibe="guitar"] .timeline-card:hover {
+		box-shadow: 0 0 32px rgba(232, 163, 61, .25), var(--card-shadow-hover);
+	}
+
+	[data-vibe="guitar"] .skills-tags li:hover,
+	[data-vibe="guitar"] .highlights li:hover {
+		box-shadow: 0 0 16px rgba(232, 163, 61, .3);
+	}
+}
+
+
+/* ═══════════════════════════════════════════════
+   Parallax layer (shared shell, per-vibe particle look)
+   Populated by assets/vibes.js — empty / absent for
+   the default (no vibe) look.
+   ═══════════════════════════════════════════════ */
+.vibe-parallax {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.vibe-particle {
+	position: fixed;
+	top: -8vh;
+	display: inline-block;
+	will-change: transform, translate;
+	line-height: 1;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+/* Snowboard: snow falling + drifting */
+@keyframes vibe-fall-drift {
+	0% {
+		transform: translateY(-10vh) translateX(0) rotate(0deg);
+		opacity: 0;
+	}
+
+	8% {
+		opacity: .6;
+	}
+
+	92% {
+		opacity: .5;
+	}
+
+	100% {
+		transform: translateY(112vh) translateX(28px) rotate(220deg);
+		opacity: 0;
+	}
+}
+
+.p-snow {
+	color: var(--vibe-particle-color, #eaf6ff);
+	animation-name: vibe-fall-drift;
+	filter: drop-shadow(0 0 4px rgba(255, 255, 255, .25));
+}
+
+/* Paragliding: clouds + glider drifting sideways */
+@keyframes vibe-drift-across {
+	0% {
+		transform: translateX(-15vw) translateY(0);
+		opacity: 0;
+	}
+
+	10% {
+		opacity: .55;
+	}
+
+	90% {
+		opacity: .45;
+	}
+
+	100% {
+		transform: translateX(115vw) translateY(-6vh);
+		opacity: 0;
+	}
+}
+
+.p-cloud {
+	color: var(--vibe-particle-color, #fff);
+	animation-name: vibe-drift-across;
+	filter: blur(0.5px);
+}
+
+.p-glider {
+	color: var(--vibe-particle-color-2, #ff9466);
+	animation-name: vibe-drift-across;
+}
+
+/* Tech: bits rising through the grid */
+@keyframes vibe-rise-flicker {
+	0% {
+		transform: translateY(10vh);
+		opacity: 0;
+	}
+
+	10% {
+		opacity: .7;
+	}
+
+	50% {
+		opacity: .25;
+	}
+
+	60% {
+		opacity: .7;
+	}
+
+	100% {
+		transform: translateY(-110vh);
+		opacity: 0;
+	}
+}
+
+.p-bit {
+	font-family: var(--font-mono);
+	font-weight: 700;
+	color: var(--vibe-particle-color, #00e5ff);
+	animation-name: vibe-rise-flicker;
+	text-shadow: 0 0 6px currentColor;
+}
+
+/* Guitar: notes floating up with a gentle sway */
+@keyframes vibe-float-sway {
+	0% {
+		transform: translateY(10vh) translateX(0) rotate(-4deg);
+		opacity: 0;
+	}
+
+	10% {
+		opacity: .6;
+	}
+
+	50% {
+		transform: translateY(-50vh) translateX(18px) rotate(4deg);
+	}
+
+	90% {
+		opacity: .5;
+	}
+
+	100% {
+		transform: translateY(-110vh) translateX(-10px) rotate(-4deg);
+		opacity: 0;
+	}
+}
+
+.p-note {
+	color: var(--vibe-particle-color, #f2c14e);
+	animation-name: vibe-float-sway;
+}
+
+
+/* ═══════════════════════════════════════════════
+   Vibe toggle — floating menu (desktop) /
+   slide-out drawer (mobile)
+   ═══════════════════════════════════════════════ */
+.vibe-menu {
+	position: fixed;
+	right: 24px;
+	bottom: 24px;
+	z-index: 70;
+}
+
+.vibe-menu-toggle {
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	border: 1px solid var(--color-border-strong);
+	background: var(--color-surface);
+	backdrop-filter: blur(12px);
+	box-shadow: var(--card-shadow);
+	color: var(--color-text-primary);
+	font-size: 1.3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.vibe-menu-toggle:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--card-shadow-hover);
+	border-color: var(--color-accent);
+}
+
+.vibe-panel {
+	position: absolute;
+	right: 0;
+	bottom: calc(100% + 14px);
+	width: 250px;
+	background: var(--color-surface);
+	border: 1px solid var(--card-border);
+	border-radius: 16px;
+	padding: 10px;
+	box-shadow: var(--card-shadow-hover);
+	opacity: 0;
+	transform: translateY(10px) scale(.96);
+	transform-origin: bottom right;
+	pointer-events: none;
+	transition: opacity .22s ease, transform .22s ease;
+}
+
+body.vibe-menu-open .vibe-panel {
+	opacity: 1;
+	transform: translateY(0) scale(1);
+	pointer-events: auto;
+}
+
+.vibe-panel-label {
+	font-family: var(--font-mono);
+	font-size: 0.65rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--color-text-faint);
+	padding: 8px 10px 6px;
+}
+
+.vibe-option {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	background: none;
+	border: 1px solid transparent;
+	border-radius: 10px;
+	padding: 10px;
+	color: var(--color-text-secondary);
+	font-size: 0.88rem;
+	text-align: left;
+	cursor: pointer;
+}
+
+.vibe-option:hover {
+	background: var(--card-bg-hover);
+	color: var(--color-text-white);
+}
+
+.vibe-option.active {
+	color: var(--color-text-white);
+	background: var(--card-bg-hover);
+	border-color: var(--color-accent);
+}
+
+.vibe-option-icon {
+	font-size: 1.15rem;
+	flex-shrink: 0;
+}
+
+.vibe-backdrop {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, .5);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity .3s ease;
+	z-index: 65;
+}
+
+body.vibe-menu-open .vibe-backdrop {
+	display: none;
+	/* desktop: click-outside closes the popover instead of a dimmed backdrop */
+}
+
+/* ── Mobile: side drawer instead of a floating popover ── */
+@media (max-width: 768px) {
+	.vibe-panel {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: auto;
+		height: 100vh;
+		width: min(84vw, 320px);
+		border-radius: 0;
+		border-left: 1px solid var(--card-border);
+		border-top: none;
+		border-right: none;
+		border-bottom: none;
+		padding: 84px 18px 24px;
+		overflow-y: auto;
+		transform: translateX(100%);
+		transform-origin: center;
+	}
+
+	body.vibe-menu-open .vibe-panel {
+		transform: translateX(0);
+	}
+
+	.vibe-panel-label {
+		padding: 0 10px 12px;
+		font-size: 0.7rem;
+	}
+
+	.vibe-option {
+		padding: 14px 12px;
+		font-size: 0.95rem;
+	}
+
+	body.vibe-menu-open .vibe-backdrop {
+		display: block;
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.vibe-menu {
+		right: 18px;
+		bottom: 18px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.vibe-panel,
+	.vibe-menu-toggle {
+		transition: none;
+	}
+}

@@ -52,6 +52,15 @@
 				}
 
 				document.documentElement.setAttribute('data-theme', theme);
+
+				// Character "vibe" theme (snowboard/paragliding/tech/guitar) — set
+				// early too, so there's no flash of the default look on reload.
+				const VIBE_KEY = 'vibe-preference';
+				const validVibes = ['snowboard', 'paragliding', 'tech', 'guitar'];
+				const savedVibe = localStorage.getItem(VIBE_KEY);
+				if (savedVibe && validVibes.includes(savedVibe)) {
+					document.documentElement.setAttribute('data-vibe', savedVibe);
+				}
 			} catch (e) {
 				// fail silently — never block paint
 			}
@@ -60,9 +69,32 @@
 
 	<link rel="icon" href="./assets/favicon.ico" />
 	<link rel="stylesheet" href="./assets/main.css" />
+	<link rel="stylesheet" href="./assets/vibes.css" />
 </head>
 
 <body>
+
+	<!-- Ambient parallax layer for the active vibe (populated by assets/vibes.js) -->
+	<div class="vibe-parallax" id="vibeParallax" aria-hidden="true"></div>
+
+	<!-- Vibe (character theme) menu: floating popover on desktop, slide-out drawer on mobile -->
+	<div class="vibe-menu" id="vibeMenu">
+		<button
+			class="vibe-menu-toggle"
+			id="vibeMenuToggle"
+			type="button"
+			aria-haspopup="true"
+			aria-expanded="false"
+			aria-controls="vibePanel"
+			aria-label="Choose a page vibe"
+		>
+			<span id="vibeMenuIcon" aria-hidden="true">✨</span>
+		</button>
+		<div class="vibe-panel" id="vibePanel" role="menu" aria-label="Page vibe options">
+			<!-- options injected by assets/vibes.js -->
+		</div>
+	</div>
+	<div class="vibe-backdrop" id="vibeBackdrop"></div>
 
 	<div class="container">
 
@@ -409,6 +441,7 @@
 	</div>
 
 	<script src="./assets/main.js" defer></script>
+	<script src="./assets/vibes.js" defer></script>
 
 </body>
 
