@@ -204,3 +204,41 @@ html:not(.reveal-ready) .reveal { opacity: 1; transform: none; }
 	[data-interest] :is(p, h1, h2, h3, span, li, a, summary, .section-label) { color: black; -webkit-text-fill-color: currentColor; }
 	[data-interest] .timeline-card { width: auto; margin-left: 0; translate: none; rotate: none; scale: none; break-inside: avoid; }
 }
+
+/* A full-frame action photo gives the boards introduction its own silhouette. */
+.hero-copy { min-width: 0; }
+.interest-photo[hidden] { display: none; }
+.interest-photo {
+	margin: 2rem 0 0;
+	min-width: 0;
+	border: 1px solid var(--color-accent);
+	border-radius: var(--card-radius);
+	background: var(--color-surface);
+	box-shadow: 8px 8px 0 var(--color-accent);
+	transition: rotate var(--transition-medium), box-shadow var(--transition-medium);
+}
+.interest-photo-image {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: inherit;
+}
+@media (min-width: 901px) {
+	.hero-section.has-interest-photo {
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+		align-items: center;
+		gap: clamp(2rem, 4vw, 3.5rem);
+	}
+	.interest-photo { margin: 0 8px 0 0; }
+}
+@media (max-width: 900px) {
+	.interest-photo { margin-right: 8px; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+	[data-interest="boards"] .interest-photo:hover { rotate: -1deg; box-shadow: 12px 12px 0 var(--color-accent); }
+}
+@media print {
+	.interest-photo { display: none; }
+	.hero-section.has-interest-photo { display: block; }
+}

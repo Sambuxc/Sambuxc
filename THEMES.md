@@ -36,7 +36,7 @@ Motion fields: `duration` (milliseconds), `easing` (CSS timing function), `lift`
 
 The selector is built from the configuration, so changing a label updates it everywhere. To add an interest, add a unique key to `themes` and optionally its `[data-interest="your-key"]` CSS pattern. Keep Tech available unless you also change the default.
 
-For personal photos, replace the existing portrait asset references in `index.html`, or extend a theme's CSS background with an image you own. No stock or generated photos have been added.
+The boards theme uses the supplied Unsplash snowboarder photo beside the introduction on desktop (above 900px), and below it on smaller screens. The full image is shown without cropping. Edit `themes.boards.image` in `config.js` to replace its URL, alt text and intrinsic aspect ratio; remove that property to omit the image. Other themes can opt in using the same `image` shape. The controller requests the photo only when its theme is selected, supplies responsive Unsplash widths, and removes the panel if loading fails. The original portrait is unchanged.
 
 ## Behaviour and integration
 
