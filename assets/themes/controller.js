@@ -112,8 +112,40 @@
 		const pref = api.getPreference();
 		api.apply({ ...pref, scheme: pref.scheme === 'dark' ? 'light' : 'dark' }, true);
 	});
+	const photo = document.querySelector('.interest-photo');
+	const photoImage = photo?.querySelector('img');
+	let failedImage = null;
+	function syncPhoto() {
+		if (!photoImage) return;
+		const image = api.themes[api.getPreference().interest].image;
+		const visible = Boolean(image && image.src !== failedImage);
+		photo.hidden = !visible;
+		document.querySelector('.hero-section')?.classList.toggle('has-interest-photo', visible);
+		if (!visible || photoImage.getAttribute('src') === image.src) return;
+		photoImage.alt = image.alt;
+		photoImage.width = image.width;
+		photoImage.height = image.height;
+		// Only request the photo after its theme is selected. Preserve the supplied URL.
+		photoImage.sizes = '(min-width: 901px) 480px, (min-width: 769px) 720px, calc(100vw - 40px)';
+		const source = new URL(image.src, document.baseURI);
+		if (source.hostname === 'images.unsplash.com') {
+			photoImage.srcset = [480, 800, 1200, 1800, 2382].map(width => {
+				const variant = new URL(source);
+				variant.searchParams.set('w', width);
+				return `${variant.href} ${width}w`;
+			}).join(', ');
+		} else {
+			photoImage.removeAttribute('srcset');
+		}
+		photoImage.src = image.src;
+	}
+	photoImage?.addEventListener('error', () => {
+		failedImage = photoImage.getAttribute('src');
+		syncPhoto();
+	});
 	function syncControls() {
 		const pref = api.getPreference();
+		syncPhoto();
 		trigger.textContent = `Pick a vibe · ${api.themes[pref.interest].shortLabel}`;
 		panel.querySelectorAll('input').forEach(input => { input.checked = pref[input.name] === input.value; });
 		if (legacyIcon) legacyIcon.textContent = pref.scheme === 'light' ? '☀️' : '🌙';
