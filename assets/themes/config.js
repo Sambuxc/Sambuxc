@@ -6,7 +6,7 @@
 	'use strict';
 	const themes = {
 		boards: {
-			label: 'Snowboard / skateboarding', shortLabel: 'Boards', symbol: '↗',
+			label: 'Snowboard / skateboarding', shortLabel: '🛹', symbol: '🏂',
 			description: 'On snow. On wheels.',
 			font: "'Inter', system-ui, sans-serif", radius: '4px',
 			light: ['#f3f5ed', '#ffffff', '#e5e9dc', '#182016', '#48523f', '#386300', '#a33214'],
@@ -14,7 +14,7 @@
 			motion: { duration: 180, easing: 'cubic-bezier(.2,.8,.3,1)', lift: -5, tilt: -2, scale: 1.01, revealX: -22, revealY: 8, parallaxX: 18, parallaxY: -10 }
 		},
 		paragliding: {
-			label: 'Paragliding', shortLabel: 'Paragliding', symbol: '↑',
+			label: 'Paragliding', shortLabel: '🪂', symbol: '🪂',
 			description: 'A little more perspective.',
 			font: "'Instrument Serif', Georgia, serif", radius: '24px',
 			light: ['#eef8fc', '#ffffff', '#dceef5', '#102f43', '#3d5c6e', '#00678d', '#7d479d'],
@@ -22,7 +22,7 @@
 			motion: { duration: 650, easing: 'cubic-bezier(.16,1,.3,1)', lift: -8, tilt: 0, scale: 1, revealX: 0, revealY: 28, parallaxX: 5, parallaxY: -24 }
 		},
 		tech: {
-			label: 'Tech', shortLabel: 'Tech', symbol: '</>',
+			label: 'Tech', shortLabel: '📟', symbol: '📟',
 			description: 'Curiosity, made useful.',
 			font: "'Space Mono', ui-monospace, monospace", radius: '10px',
 			light: ['#f2f4fc', '#ffffff', '#e4e9f8', '#17203b', '#485574', '#394fb3', '#006c62'],
@@ -30,7 +30,7 @@
 			motion: { duration: 220, easing: 'cubic-bezier(.2,0,0,1)', lift: -2, tilt: 0, scale: 1, revealX: 0, revealY: 12, parallaxX: 0, parallaxY: -6 }
 		},
 		music: {
-			label: 'Music / guitar', shortLabel: 'Music', symbol: '♪',
+			label: 'Music / guitar', shortLabel: '🎶', symbol: '🎶',
 			description: 'Room for a different rhythm.',
 			font: "'Instrument Serif', Georgia, serif", radius: '16px',
 			light: ['#fff4e8', '#fffcf7', '#f4dfc8', '#382218', '#6d5140', '#99451c', '#804475'],

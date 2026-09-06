@@ -114,7 +114,7 @@
 	});
 	function syncControls() {
 		const pref = api.getPreference();
-		trigger.textContent = `Explore my interests · ${api.themes[pref.interest].shortLabel}`;
+		trigger.textContent = `Pick a vibe · ${api.themes[pref.interest].shortLabel}`;
 		panel.querySelectorAll('input').forEach(input => { input.checked = pref[input.name] === input.value; });
 		if (legacyIcon) legacyIcon.textContent = pref.scheme === 'light' ? '☀️' : '🌙';
 		if (legacyButton) legacyButton.setAttribute('aria-label', `Switch to ${pref.scheme === 'light' ? 'dark' : 'light'} mode`);
