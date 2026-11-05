@@ -61,25 +61,42 @@
 		if (pageLocked) document.body.style.overflow = previousOverflow;
 		pageLocked = false;
 	}
-	function openPanel() {
+	let hoverPreview = false;
+	function openPanel(preview = false) {
 		if (panel.open) return;
-		if (mobile.matches) {
+		hoverPreview = preview;
+		if (preview) {
+			// Non-modal preview: showing it must not move keyboard focus.
+			panel.open = true;
+		} else if (mobile.matches) {
 			panel.showModal();
 			lockPage();
 		} else {
 			panel.show();
 		}
 		trigger.setAttribute('aria-expanded', 'true');
-		panel.querySelector('input[name="interest"]:checked').focus();
+		if (!preview) panel.querySelector('input[name="interest"]:checked').focus();
 	}
 	function closePanel() {
 		if (!panel.open) return;
+		const restoreFocus = !hoverPreview || panel.contains(document.activeElement);
+		hoverPreview = false;
 		panel.close();
 		unlockPage();
 		trigger.setAttribute('aria-expanded', 'false');
-		trigger.focus({ preventScroll: true });
+		if (restoreFocus) trigger.focus({ preventScroll: true });
 	}
-	trigger.addEventListener('click', () => panel.open ? closePanel() : openPanel());
+	trigger.addEventListener('pointerenter', event => {
+		if (!mobile.matches && event.pointerType === 'mouse' && event.buttons === 0) openPanel(true);
+	});
+	trigger.addEventListener('click', () => {
+		if (panel.open && hoverPreview) {
+			// A click following pointerenter should enter the panel, not immediately close it.
+			hoverPreview = false;
+			panel.querySelector('input[name="interest"]:checked').focus();
+		} else if (panel.open) closePanel();
+		else openPanel();
+	});
 	panel.querySelector('.interest-close').addEventListener('click', closePanel);
 	panel.addEventListener('cancel', event => {
 		event.preventDefault();
