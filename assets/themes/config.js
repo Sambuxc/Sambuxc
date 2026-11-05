@@ -8,6 +8,11 @@
 		boards: {
 			label: 'Snowboard / skateboarding', shortLabel: '🛹', symbol: '🏂',
 			description: 'On snow. On wheels.',
+			image: {
+				src: 'https://images.unsplash.com/photo-1625154869776-100eba31abbb?q=80&w=2382&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+				alt: 'Snowboarder in a yellow jacket jumping against a clear blue sky',
+				width: 1200, height: 782
+			},
 			font: "'Inter', system-ui, sans-serif", radius: '4px',
 			light: ['#f3f5ed', '#ffffff', '#e5e9dc', '#182016', '#48523f', '#386300', '#a33214'],
 			dark: ['#11150e', '#1e2518', '#2b3422', '#f0f6e6', '#b4c2a4', '#c3ef59', '#ff9c76'],
@@ -16,6 +21,11 @@
 		paragliding: {
 			label: 'Paragliding', shortLabel: '🪂', symbol: '🪂',
 			description: 'A little more perspective.',
+			image: {
+				src: 'https://images.unsplash.com/photo-1793920411642-665a5b5ba818?auto=format&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+				alt: 'Paragliders with red and orange canopies soaring over a wooded valley and distant mountains',
+				width: 480, height: 640
+			},
 			font: "'Instrument Serif', Georgia, serif", radius: '24px',
 			light: ['#eef8fc', '#ffffff', '#dceef5', '#102f43', '#3d5c6e', '#00678d', '#7d479d'],
 			dark: ['#091c2b', '#112e42', '#1a3d54', '#e8f6fd', '#aac9dc', '#83daf4', '#d4b0ef'],
