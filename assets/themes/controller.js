@@ -11,17 +11,21 @@
 	trigger.setAttribute('aria-controls', 'interest-panel');
 	trigger.setAttribute('aria-expanded', 'false');
 
+	const triggerSymbol = document.createElement('span');
+	triggerSymbol.setAttribute('aria-hidden', 'true');
+	trigger.append(triggerSymbol);
+
 	const panel = document.createElement('dialog');
 	panel.id = 'interest-panel';
 	panel.className = 'interest-panel';
 	panel.setAttribute('aria-labelledby', 'interest-heading');
 	panel.innerHTML = `
 		<div class="interest-panel-heading">
-			<h2 id="interest-heading">A few sides of me</h2>
+			<h2 id="interest-heading">Pick a vibe</h2>
 			<button type="button" class="interest-close" aria-label="Close theme menu">×</button>
 		</div>
 		<form class="interest-form">
-			<fieldset><legend>Explore an interest</legend><div class="interest-options"></div></fieldset>
+			<fieldset><legend class="interest-visually-hidden">Theme</legend><div class="interest-options"></div></fieldset>
 			<fieldset class="scheme-options"><legend>Colour scheme</legend>
 				<label><input type="radio" name="scheme" value="light"> Light</label>
 				<label><input type="radio" name="scheme" value="dark"> Dark</label>
@@ -39,13 +43,9 @@
 		symbol.className = 'interest-symbol';
 		symbol.setAttribute('aria-hidden', 'true');
 		symbol.textContent = theme.symbol;
-		const copy = document.createElement('span');
-		const title = document.createElement('strong');
+		const title = document.createElement('span');
 		title.textContent = theme.label;
-		const description = document.createElement('span');
-		description.textContent = theme.description;
-		copy.append(title, description);
-		label.append(input, symbol, copy);
+		label.append(input, symbol, title);
 		options.append(label);
 	});
 	document.body.append(trigger, panel);
@@ -163,7 +163,10 @@
 	function syncControls() {
 		const pref = api.getPreference();
 		syncPhoto();
-		trigger.textContent = `Pick a vibe · ${api.themes[pref.interest].shortLabel}`;
+		const theme = api.themes[pref.interest];
+		triggerSymbol.textContent = theme.symbol;
+		trigger.setAttribute('aria-label', `Pick a vibe. Current theme: ${theme.label}`);
+		trigger.title = `Pick a vibe · ${theme.label}`;
 		panel.querySelectorAll('input').forEach(input => { input.checked = pref[input.name] === input.value; });
 		if (legacyIcon) legacyIcon.textContent = pref.scheme === 'light' ? '☀️' : '🌙';
 		if (legacyButton) legacyButton.setAttribute('aria-label', `Switch to ${pref.scheme === 'light' ? 'dark' : 'light'} mode`);
