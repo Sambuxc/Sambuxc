@@ -6,7 +6,7 @@
 	'use strict';
 	const themes = {
 		boards: {
-			label: 'Snowboard / skateboarding', shortLabel: '🛹', symbol: '🏂',
+			label: 'Snowboard / Skate', shortLabel: '🛹', symbol: '🏂',
 			description: 'On snow. On wheels.',
 			image: {
 				src: 'https://images.unsplash.com/photo-1625154869776-100eba31abbb?q=80&w=2382&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -32,7 +32,7 @@
 			motion: { duration: 650, easing: 'cubic-bezier(.16,1,.3,1)', lift: -8, tilt: 0, scale: 1, revealX: 0, revealY: 28, parallaxX: 5, parallaxY: -24 }
 		},
 		tech: {
-			label: 'Tech', shortLabel: '📟', symbol: '📟',
+			label: 'Tech', shortLabel: '📟', symbol: '💻',
 			description: 'Curiosity, made useful.',
 			font: "'Space Mono', ui-monospace, monospace", radius: '10px',
 			light: ['#f2f4fc', '#ffffff', '#e4e9f8', '#17203b', '#485574', '#394fb3', '#006c62'],
@@ -40,7 +40,7 @@
 			motion: { duration: 220, easing: 'cubic-bezier(.2,0,0,1)', lift: -2, tilt: 0, scale: 1, revealX: 0, revealY: 12, parallaxX: 0, parallaxY: -6 }
 		},
 		music: {
-			label: 'Music / guitar', shortLabel: '🎶', symbol: '🎶',
+			label: 'Music / Guitar', shortLabel: '🎶', symbol: '🎸',
 			description: 'Room for a different rhythm.',
 			font: "'Instrument Serif', Georgia, serif", radius: '16px',
 			light: ['#fff4e8', '#fffcf7', '#f4dfc8', '#382218', '#6d5140', '#99451c', '#804475'],
