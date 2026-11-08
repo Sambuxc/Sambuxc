@@ -43,9 +43,7 @@
 		symbol.className = 'interest-symbol';
 		symbol.setAttribute('aria-hidden', 'true');
 		symbol.textContent = theme.symbol;
-		const title = document.createElement('span');
-		title.textContent = theme.label;
-		label.append(input, symbol, title);
+		label.append(input, symbol);
 		options.append(label);
 	});
 	document.body.append(trigger, panel);
