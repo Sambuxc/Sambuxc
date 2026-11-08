@@ -39,6 +39,7 @@
 		input.type = 'radio';
 		input.name = 'interest';
 		input.value = id;
+		input.setAttribute('aria-label', theme.label);
 		const symbol = document.createElement('span');
 		symbol.className = 'interest-symbol';
 		symbol.setAttribute('aria-hidden', 'true');
