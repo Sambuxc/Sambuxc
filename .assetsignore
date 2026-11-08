@@ -1,0 +1,11 @@
+# Publish only the static website.
+*
+!index.html
+!assets/
+!assets/**
+!components/
+!components/**
+!pages/
+!pages/**
+**/*.bk
+**/*_old
