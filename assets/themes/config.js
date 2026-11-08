@@ -43,6 +43,11 @@
 		},
 		music: {
 			label: 'Music / Guitar', symbol: '🎸',
+			image: {
+				src: 'https://images.unsplash.com/photo-1794132474150-3a950ac1bb48?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+				alt: 'Sam playing an electric guitar on stage with a drummer in the background and a crowd of people in front',
+				width: 1200, height: 782
+			},
 			font: "'Instrument Serif', Georgia, serif", radius: '16px',
 			light: ['#fff4e8', '#fffcf7', '#f4dfc8', '#382218', '#6d5140', '#99451c', '#804475'],
 			dark: ['#211510', '#32221a', '#463024', '#fff0df', '#d4b8a0', '#f7b36d', '#e7a6d5'],
