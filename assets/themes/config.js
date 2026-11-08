@@ -6,8 +6,7 @@
 	'use strict';
 	const themes = {
 		boards: {
-			label: 'Snowboard / skateboarding', shortLabel: '🛹', symbol: '🏂',
-			description: 'On snow. On wheels.',
+			label: 'Snowboard / Skate', symbol: '🏂',
 			image: {
 				src: 'https://images.unsplash.com/photo-1625154869776-100eba31abbb?q=80&w=2382&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 				alt: 'Snowboarder in a yellow jacket jumping against a clear blue sky',
@@ -19,8 +18,7 @@
 			motion: { duration: 180, easing: 'cubic-bezier(.2,.8,.3,1)', lift: -5, tilt: -2, scale: 1.01, revealX: -22, revealY: 8, parallaxX: 18, parallaxY: -10 }
 		},
 		paragliding: {
-			label: 'Paragliding', shortLabel: '🪂', symbol: '🪂',
-			description: 'A little more perspective.',
+			label: 'Paragliding', symbol: '🪂',
 			image: {
 				src: 'https://images.unsplash.com/photo-1793920411642-665a5b5ba818?auto=format&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
 				alt: 'Paragliders with red and orange canopies soaring over a wooded valley and distant mountains',
@@ -32,16 +30,24 @@
 			motion: { duration: 650, easing: 'cubic-bezier(.16,1,.3,1)', lift: -8, tilt: 0, scale: 1, revealX: 0, revealY: 28, parallaxX: 5, parallaxY: -24 }
 		},
 		tech: {
-			label: 'Tech', shortLabel: '📟', symbol: '📟',
-			description: 'Curiosity, made useful.',
+			label: 'Tech', symbol: '📟',
+			image:{
+				src: 'https://images.unsplash.com/photo-1794063983953-8ef313af4082?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+				alt: 'A person holding a smartphone with a glowing screen in a dark room',
+				width: 1200, height: 782
+			},
 			font: "'Space Mono', ui-monospace, monospace", radius: '10px',
 			light: ['#f2f4fc', '#ffffff', '#e4e9f8', '#17203b', '#485574', '#394fb3', '#006c62'],
 			dark: ['#0b1020', '#151e35', '#202c46', '#edf2ff', '#b0bfdf', '#9babff', '#70dcc7'],
 			motion: { duration: 220, easing: 'cubic-bezier(.2,0,0,1)', lift: -2, tilt: 0, scale: 1, revealX: 0, revealY: 12, parallaxX: 0, parallaxY: -6 }
 		},
 		music: {
-			label: 'Music / guitar', shortLabel: '🎶', symbol: '🎶',
-			description: 'Room for a different rhythm.',
+			label: 'Music / Guitar', symbol: '🎸',
+			image: {
+				src: 'https://images.unsplash.com/photo-1794132474150-3a950ac1bb48?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+				alt: 'Sam playing an electric guitar on stage with a drummer in the background and a crowd of people in front',
+				width: 1200, height: 782
+			},
 			font: "'Instrument Serif', Georgia, serif", radius: '16px',
 			light: ['#fff4e8', '#fffcf7', '#f4dfc8', '#382218', '#6d5140', '#99451c', '#804475'],
 			dark: ['#211510', '#32221a', '#463024', '#fff0df', '#d4b8a0', '#f7b36d', '#e7a6d5'],
