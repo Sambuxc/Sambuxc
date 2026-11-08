@@ -122,7 +122,7 @@ html:not(.reveal-ready) .reveal { opacity: 1; transform: none; }
 	position: fixed;
 	inset: auto 1.5rem 5.75rem auto;
 	margin: 0;
-	width: 18rem;
+	width: auto	;
 	max-width: calc(100vw - 3rem);
 	max-height: calc(100dvh - 7rem);
 	overflow-y: auto;
@@ -142,25 +142,23 @@ html:not(.reveal-ready) .reveal { opacity: 1; transform: none; }
 .interest-panel h2 { font: 600 1.125rem/1.4 var(--font-sans); }
 .interest-close {
 	flex-shrink: 0;
-	width: 44px;
-	height: 44px;
+	width: 35px;
+	height: 35px;
 	border: 1px solid var(--color-border-strong);
 	border-radius: 50%;
 	font: 1.5rem/1 var(--font-sans);
 	background: transparent;
 	color: inherit;
 	cursor: pointer;
+	font-size: 12pt;
 }
 .interest-close:hover { background: var(--color-surface-raised); }
 .interest-form fieldset { border: 0; min-width: 0; }
 .interest-form legend { margin-bottom: 0.6rem; font-size: 0.875rem; color: var(--color-text-muted); }
-.interest-options { display: grid; gap: 0.5rem; }
+.interest-options { display: flex; gap: 0.5rem; }
 .interest-option {
-	display: grid;
-	position: relative;
-	grid-template-columns: 2rem minmax(0, 1fr);
-	gap: 0.65rem;
-	align-items: center;
+	display: flex;
+	justify-content: center;
 	padding: 0.75rem;
 	border: 1px solid var(--color-border-strong);
 	border-radius: 10px;
