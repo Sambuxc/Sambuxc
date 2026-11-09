@@ -1,0 +1,90 @@
+/* Contact form uses the active interest and colour-scheme tokens. */
+.contact-section {
+	display: grid;
+	grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+	align-items: start;
+	gap: clamp(2rem, 5vw, 4rem);
+	scroll-margin-top: 2rem;
+}
+.contact-intro h2 {
+	font-family: var(--font-display);
+	font-size: clamp(1.8rem, 3vw, 2.6rem);
+	line-height: 1.2;
+	letter-spacing: -0.03em;
+	margin-bottom: 1rem;
+	overflow-wrap: anywhere;
+}
+.contact-intro > p:last-child {
+	color: var(--color-text-secondary);
+	max-width: 36ch;
+}
+.contact-form {
+	display: grid;
+	gap: 1.5rem;
+	min-width: 0;
+	padding: clamp(1.25rem, 3vw, 2rem);
+	border: 1px solid var(--color-border-strong);
+	border-top: 3px solid var(--color-accent);
+	border-radius: var(--card-radius);
+	background: var(--color-surface);
+	box-shadow: var(--card-shadow);
+}
+.contact-details {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+.contact-field { display: grid; gap: 0.5rem; min-width: 0; }
+.contact-field label { font-size: 0.875rem; font-weight: 600; }
+.contact-note, .contact-status {
+	font-size: 0.875rem;
+	line-height: 1.6;
+	color: var(--color-text-muted);
+}
+.contact-field input, .contact-field textarea {
+	width: 100%;
+	min-width: 0;
+	min-height: 48px;
+	padding: 0.75rem;
+	border: 1px solid var(--color-text-muted);
+	border-radius: min(var(--card-radius), 10px);
+	background: var(--color-bg);
+	color: var(--color-text-primary);
+	font: 1rem/1.5 var(--font-sans);
+	transition: border-color var(--transition-fast);
+}
+.contact-field textarea { resize: vertical; }
+.contact-field :is(input, textarea):hover { border-color: var(--color-accent); }
+.contact-form :is(input, textarea, button):focus-visible {
+	outline: 3px solid var(--color-accent);
+	outline-offset: 4px;
+}
+.contact-submit {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	justify-self: start;
+	min-height: 48px;
+	padding: 0.75rem 1.25rem;
+	border: 2px solid var(--color-accent);
+	border-radius: min(var(--card-radius), 10px);
+	background: var(--color-accent);
+	color: var(--color-bg);
+	font: 600 1rem/1.5 var(--font-sans);
+	cursor: pointer;
+	transition: background var(--transition-fast), color var(--transition-fast);
+}
+.contact-submit:hover { background: var(--color-surface); color: var(--color-accent); }
+.contact-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.contact-status:empty { display: none; }
+@media (max-width: 768px) {
+	.contact-section { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+	.contact-details { grid-template-columns: minmax(0, 1fr); }
+	.contact-submit { justify-self: stretch; }
+}
+@media print {
+	.contact-section { display: none; }
+}

@@ -12,6 +12,7 @@
 	<!-- Small synchronous configuration applies validated preferences before paint. -->
 	<script src="./assets/themes/config.js"></script>
 	<link rel="stylesheet" href="./assets/main.css" />
+	<link rel="stylesheet" href="./assets/contact.css" />
 	<link rel="stylesheet" href="./assets/themes/themes.css" />
 </head>
 
@@ -352,6 +353,36 @@
 
 	<div class="container">
 
+
+		<section class="contact-section" id="contact" aria-labelledby="contact-heading">
+			<div class="contact-intro">
+				<p class="section-label">Contact me</p>
+				<h2 id="contact-heading">Let’s start a conversation.</h2>
+				<p>Have a project in mind, a role to discuss, or a question? I’d love to hear from you.</p>
+			</div>
+			<form class="contact-form" id="contact-form" aria-labelledby="contact-heading" aria-describedby="contact-preview">
+				<p class="contact-note" id="contact-preview">Form preview — sending will be available soon. All fields are required.</p>
+				<div class="contact-details">
+					<div class="contact-field">
+						<label for="contact-name">Name</label>
+						<input id="contact-name" name="name" type="text" autocomplete="name" maxlength="100" required>
+					</div>
+					<div class="contact-field">
+						<label for="contact-email">Email</label>
+						<input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" required>
+					</div>
+				</div>
+				<div class="contact-field">
+					<label for="contact-message">Message</label>
+					<p class="contact-note" id="contact-message-hint">A few details about what you have in mind. Up to 5,000 characters.</p>
+					<textarea id="contact-message" name="message" rows="6" maxlength="5000" aria-describedby="contact-message-hint" required></textarea>
+				</div>
+				<button class="contact-submit" id="contact-submit" type="button" disabled aria-describedby="contact-preview">Check message <span aria-hidden="true">↗</span></button>
+				<p class="contact-status" id="contact-status" role="status" aria-atomic="true"></p>
+				<noscript><p class="contact-note">Enable JavaScript to try the form preview.</p></noscript>
+			</form>
+		</section>
+
 		<!-- Footer -->
 		<footer class="site-footer reveal">
 			<p>&copy; 2026 Sam Bruton</p>
@@ -366,6 +397,7 @@
 	</div>
 
 	<script src="./assets/main.js" defer></script>
+	<script src="./assets/contact.js" defer></script>
 	<script src="./assets/themes/controller.js" defer></script>
 
 </body>
