@@ -31,7 +31,7 @@
 		retry.hidden = true;
 		updateButton();
 		widgetId = window.turnstile.render('#contact-turnstile', {
-			sitekey: '0x4AAAAAAF6C5EOoOaJHurMF',
+			sitekey: '0x4AAAAAACsPS8ootg3uaoHB',
 			action: 'contact',
 			theme: widgetTheme,
 			size: 'flexible',
