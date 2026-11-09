@@ -99,3 +99,20 @@
 }
 .header-links .contact-nav-link:hover { color: var(--color-accent); }
 .contact-nav-link svg { display: block; flex-shrink: 0; }
+
+.contact-verification { min-width: 0; display: grid; gap: 0.75rem; }
+.contact-verification-retry {
+	justify-self: start;
+	min-height: 44px;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--color-accent);
+	border-radius: 8px;
+	background: var(--color-surface);
+	color: var(--color-accent);
+	font: inherit;
+	cursor: pointer;
+}
+.contact-verification-retry[hidden] { display: none; }
+@media (max-width: 360px) {
+	.contact-form { padding-inline: 0.75rem; }
+}
