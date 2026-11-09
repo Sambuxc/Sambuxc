@@ -88,3 +88,14 @@
 @media print {
 	.contact-section { display: none; }
 }
+
+.header-links .contact-nav-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
+	padding: 10px;
+}
+.header-links .contact-nav-link:hover { color: var(--color-accent); }
+.contact-nav-link svg { display: block; flex-shrink: 0; }
