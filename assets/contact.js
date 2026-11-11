@@ -32,7 +32,6 @@
 		updateButton();
 		widgetId = window.turnstile.render('#contact-turnstile', {
 			sitekey: '0x4AAAAAACsPS8ootg3uaoHB',
-			action: 'contact',
 			theme: widgetTheme,
 			size: 'flexible',
 			'response-field': false,
@@ -136,7 +135,6 @@
 		}
 	}
 	form.addEventListener('submit', sendMessage);
-	button.addEventListener('click', sendMessage);
 	form.addEventListener('input', event => {
 		if (!fields.includes(event.target) || sending) return;
 		event.target.setCustomValidity('');
