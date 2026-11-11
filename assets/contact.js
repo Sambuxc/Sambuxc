@@ -4,7 +4,6 @@
 	if (!form) return;
 	const button = document.getElementById('contact-submit');
 	const status = document.getElementById('contact-status');
-	const verification = document.getElementById('contact-verification-status');
 	const retry = document.getElementById('contact-verification-retry');
 	const fields = [...form.querySelectorAll('input[required], textarea[required]')];
 	let token = '';
@@ -16,9 +15,8 @@
 	function updateButton() {
 		button.disabled = sending || !token;
 	}
-	function verificationFailed(message) {
+	function verificationFailed() {
 		token = '';
-		verification.textContent = message;
 		retry.hidden = false;
 		updateButton();
 	}
@@ -27,7 +25,6 @@
 		if (widgetId !== null) window.turnstile.remove(widgetId);
 		token = '';
 		widgetTheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
-		verification.textContent = 'Complete the verification to send your message.';
 		retry.hidden = true;
 		updateButton();
 		widgetId = window.turnstile.render('#contact-turnstile', {
@@ -37,18 +34,17 @@
 			'response-field': false,
 			callback(value) {
 				token = value;
-				verification.textContent = 'Verification complete.';
 				retry.hidden = true;
 				updateButton();
 			},
 			'expired-callback'() {
-				verificationFailed('Verification expired. Please verify again.');
+				verificationFailed();
 			},
 			'timeout-callback'() {
-				verificationFailed('Verification timed out. Please try again.');
+				verificationFailed();
 			},
 			'error-callback'() {
-				verificationFailed('Verification could not load. Please try again.');
+				verificationFailed();
 				return true;
 			}
 		});
@@ -59,13 +55,12 @@
 		script = document.createElement('script');
 		script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onContactTurnstileLoad&render=explicit';
 		script.async = true;
-		script.addEventListener('error', () => verificationFailed('Verification could not load. Check your connection and try again.'));
+		script.addEventListener('error', () => verificationFailed());
 		document.head.append(script);
 	}
 	retry.addEventListener('click', () => {
 		if (sending) return;
 		retry.hidden = true;
-		verification.textContent = 'Loading verification…';
 		if (window.turnstile) renderWidget();
 		else loadWidget();
 	});
@@ -85,7 +80,7 @@
 		});
 		if (!form.reportValidity()) return;
 		if (!token) {
-			verificationFailed('Please complete verification before sending.');
+			verificationFailed();
 			return;
 		}
 		const values = Object.fromEntries(fields.map(field => [field.name, field.value.trim()]));
@@ -128,7 +123,6 @@
 				if (widgetTheme !== document.documentElement.dataset.theme) renderWidget();
 				else {
 					window.turnstile.reset(widgetId);
-					verification.textContent = 'Complete verification before sending another message.';
 				}
 			}
 			updateButton();
